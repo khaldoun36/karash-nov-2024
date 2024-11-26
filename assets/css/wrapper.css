@@ -1,0 +1,54 @@
+/* ************************* */
+/* **** Primary Wrapper **** */
+/* ************************* */
+
+.wrapper {
+    --container-width: 1fr;
+    --padding-inline: 1rem;
+    display: grid;
+    grid-template-columns:
+        [full-width-start] var(--padding-inline) [breakout-start] 0px
+        [content-start] var(--container-width) [content-end]
+        var(--padding-inline)
+        [full-width-end] 0px [breakout-end];
+}
+
+@media (width >= 768px) {
+    .wrapper {
+        --container-width: 1fr;
+        --padding-inline: 2rem;
+    }
+}
+
+@media (width>= 1024px) {
+    .wrapper {
+        --container-width: calc(1024px - 2rem);
+        --padding-inline: 1fr;
+    }
+}
+
+@media (width >= 1280px) {
+    .wrapper {
+        --container-width: calc(1280px - 2rem);
+        --padding-inline: 1fr;
+    }
+}
+
+@media (width >= 1536px) {
+    .wrapper {
+        --container-width: calc(1536px - 2rem);
+        --padding-inline: 1fr;
+    }
+}
+
+.wrapper > :not(.breakout, .full-width) {
+    grid-column: content;
+}
+
+.wrapper > .breakout {
+    grid-column: breakout;
+}
+
+.wrapper > .full-width {
+    grid-column: full-width;
+}

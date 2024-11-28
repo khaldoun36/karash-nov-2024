@@ -13,7 +13,7 @@
                 >
                     <NuxtImg
                         :src="service?.imagePath"
-                        class="aspect-square h-full min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc((1024px)/2)] xl:min-w-[calc((1216px)/2)] 2xl:min-w-[calc((1504px)/2)]"
+                        class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc(1024px/2)] xl:min-w-[calc(1216px/2)] 2xl:min-w-[calc(1472px/2)]"
                     />
                     <div
                         class="mt-6 flex items-center gap-4 text-neutral-100 transition-all group-hover:gap-5 group-hover:text-neutral-400"
@@ -32,17 +32,23 @@
                 </NuxtLink>
             </div>
             <div
-                class="mt-10 hidden items-center justify-end gap-8 pr-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
+                class="mt-10 hidden items-center gap-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
             >
                 <button
-                    class="embla__prev flex size-12 items-center justify-center rounded-full bg-neutral-800"
+                    class="embla__prev flex size-12 items-center justify-center rounded-full bg-neutral-900"
                     @click="scrollPrev"
+                    :class="{
+                        'cursor-not-allowed opacity-50': !canScrollPrev,
+                    }"
                 >
                     <Icon name="heroicons:chevron-left-20-solid" size="28px" />
                 </button>
                 <button
-                    class="embla__next flex size-12 items-center justify-center rounded-full bg-neutral-800"
+                    class="embla__next flex size-12 items-center justify-center rounded-full bg-neutral-900"
                     @click="scrollNext"
+                    :class="{
+                        'cursor-not-allowed opacity-50': !canScrollNext,
+                    }"
                 >
                     <Icon name="heroicons:chevron-right-20-solid" size="28px" />
                 </button>
@@ -52,6 +58,8 @@
 </template>
 
 <script setup>
+import emblaCarouselVue from "embla-carousel-vue";
+
 const { locale } = useI18n();
 const currentLocale = locale.value;
 
@@ -59,23 +67,44 @@ const { data: servicesSection } = await useAsyncData("services-section", () =>
     queryContent(`/${currentLocale}/home/services-section`).findOne()
 );
 
-// Embala Carousel Start
-import emblaCarouselVue from "embla-carousel-vue";
+const canScrollPrev = ref(false);
+const canScrollNext = ref(true);
 
-const [emblaRef, emblaApi] = emblaCarouselVue({ loop: false, align: "start" });
+const [emblaRef, emblaApi] = emblaCarouselVue({
+    loop: false,
+    align: "start",
+});
+
 onMounted(() => {
     if (emblaApi.value) {
-        console.log(emblaApi.value.slideNodes()); // Access API
+        // Update scroll state when the carousel changes
+        emblaApi.value.on("select", () => {
+            updateScrollState();
+        });
+
+        // Initial state check
+        updateScrollState();
     }
 });
+
+const updateScrollState = () => {
+    if (emblaApi.value) {
+        canScrollPrev.value = emblaApi.value.canScrollPrev();
+        canScrollNext.value = emblaApi.value.canScrollNext();
+    }
+};
+
 const scrollPrev = () => {
-    if (emblaApi.value) emblaApi.value.scrollPrev();
+    if (emblaApi.value && canScrollPrev.value) {
+        emblaApi.value.scrollPrev();
+    }
 };
 
 const scrollNext = () => {
-    if (emblaApi.value) emblaApi.value.scrollNext();
+    if (emblaApi.value && canScrollNext.value) {
+        emblaApi.value.scrollNext();
+    }
 };
-// Embala Carousel end
 </script>
 
 <style scoped>

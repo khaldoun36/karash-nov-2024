@@ -15,10 +15,12 @@
                             :alt="article.title"
                             width="4000"
                             height="3000"
-                            class="aspect-[4/3] flex-1 overflow-clip rounded border border-white/10 object-cover lg:max-w-[50%]"
+                            class="aspect-[4/3] h-auto flex-1 overflow-clip rounded border border-white/10 object-cover lg:max-w-[50%]"
                         />
 
-                        <div class="flex flex-col">
+                        <div
+                            class="flex flex-col justify-between lg:aspect-[1.2]"
+                        >
                             <div>
                                 <h3 class="mt-5 text-balance text-2xl lg:mt-0">
                                     {{ article.title }}

@@ -6,7 +6,7 @@
             {{ projectsHeroSection?.title }}
         </h1>
     </main>
-    <section class="mt-5 divide-y divide-white/10 md:mt-6 lg:mt-8">
+    <section class="mt-20 divide-y divide-white/10 md:mt-24 lg:mt-32">
         <ContentList :path="`/${currentLocale}/projects`" v-slot="{ list }">
             <div
                 v-for="article in list.slice(0, -1)"

@@ -2,11 +2,14 @@
     <div class="wrapper">
         <NuxtPage />
     </div>
+
+    <PrimaryFooter />
 </template>
 
 <script setup>
-const { locale } = useI18n();
+import PrimaryFooter from "./components/shared/PrimaryFooter.vue";
 
+const { locale } = useI18n();
 const currentLocale = locale.value;
 </script>
 

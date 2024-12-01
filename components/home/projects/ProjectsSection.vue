@@ -8,21 +8,21 @@
                 <div v-for="article in list.slice(0, 3)" :key="article.path">
                     <NuxtLink
                         to="https://www.theverge.com/"
-                        class="flex flex-col border-b border-white/10 py-5 md:py-6 lg:flex-row lg:items-start lg:gap-20 lg:py-8"
+                        class="border-b border-white/10 py-5 md:py-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-20 lg:py-8"
                     >
                         <NuxtImg
                             :src="article.thumbnail"
                             :alt="article.title"
                             width="4000"
                             height="3000"
-                            class="aspect-[4/3] h-auto flex-1 overflow-clip rounded border border-white/10 object-cover lg:max-w-[50%]"
+                            class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover"
                         />
 
                         <div
-                            class="flex flex-col justify-between lg:aspect-[1.2]"
+                            class="mt-5 flex min-h-full flex-col justify-between lg:mt-0"
                         >
                             <div>
-                                <h3 class="mt-5 text-balance text-2xl lg:mt-0">
+                                <h3 class="text-balance text-2xl">
                                     {{ article.title }}
                                 </h3>
                                 <p class="mt-3 text-base md:text-lg">

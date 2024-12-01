@@ -1,5 +1,5 @@
 <template>
-    <section class="my-20 md:my-24 lg:my-32">
+    <section class="mt-20 md:mt-24 lg:mt-32">
         <div
             class="relative isolate flex aspect-[4/3] h-auto min-w-full flex-col items-start justify-center overflow-hidden p-8 lg:aspect-video lg:max-h-[480px]"
         >

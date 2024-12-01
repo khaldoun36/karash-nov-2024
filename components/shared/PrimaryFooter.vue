@@ -1,5 +1,7 @@
 <template>
-    <div class="wrapper full-width border-t border-white/10 bg-black">
+    <div
+        class="wrapper full-width mt-20 border-t border-white/10 bg-black md:mt-24 lg:mt-32"
+    >
         <footer
             class="flex flex-col items-start justify-between py-10 md:py-12 lg:flex-row lg:py-16"
         >

@@ -9,7 +9,7 @@
                     class="embla__slide group mr-6 flex flex-col md:mr-8"
                     v-for="service in servicesSection?.services"
                     :key="service.title"
-                    :to="service?.linkPath"
+                    :to="localePath(`/services/${service.linkPath}`)"
                 >
                     <NuxtImg
                         :src="service?.imagePath"
@@ -62,6 +62,7 @@ import emblaCarouselVue from "embla-carousel-vue";
 
 const { locale } = useI18n();
 const currentLocale = locale.value;
+const localePath = useLocalePath();
 
 const { data: servicesSection } = await useAsyncData("services-section", () =>
     queryContent(`/${currentLocale}/home/services-section`).findOne()

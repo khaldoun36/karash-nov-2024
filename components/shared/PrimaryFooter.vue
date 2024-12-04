@@ -73,9 +73,6 @@ const localePath = useLocalePath();
 const { data: footer } = await useAsyncData("footer", () =>
     queryContent(`/${currentLocale}/shared/footer`).findOne()
 );
-
-const id_one = useId();
-const id_two = useId();
 </script>
 
 <style scoped></style>

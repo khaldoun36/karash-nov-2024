@@ -21,6 +21,8 @@
                 v-for="image in article.images"
                 :src="image"
                 :key="image"
+                width="3000"
+                height="4000"
                 class="aspect-auto overflow-hidden rounded border border-white/10"
             />
         </div>
@@ -40,7 +42,7 @@ const article = await queryContent(`/${currentLocale}/projects`)
 
 useSeoMeta({
     title: `${article.title}`,
-    description: `${article.title}`,
+    description: `${article.description}`,
     ogImage: `${article.thumbnail}`,
 });
 </script>

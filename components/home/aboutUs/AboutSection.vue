@@ -25,10 +25,17 @@ import MobileAchievements from "./MobileAchievements.vue";
 import DesktopAchievments from "./DesktopAchievments.vue";
 
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 
-const { data: aboutSection } = await useAsyncData("about-section", () =>
-    queryContent(`/${currentLocale}/home/about-section`).findOne()
+// Watch for locale changes and refetch header data
+const { data: aboutSection } = await useAsyncData(
+    "about-section",
+    () => queryContent(`/${currentLocale.value}/home/about-section`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

@@ -19,10 +19,15 @@
 
 <script setup>
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 
-const { data: latestNews } = await useAsyncData("latest-news", () =>
-    queryContent(`/${currentLocale}/home/latest-news`).findOne()
+// Watch for locale changes and refetch header data
+const { data: latestNews } = await useAsyncData(
+    "latest-news",
+    () => queryContent(`/${currentLocale.value}/home/latest-news`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

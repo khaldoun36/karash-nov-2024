@@ -61,11 +61,17 @@
 import emblaCarouselVue from "embla-carousel-vue";
 
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-const { data: servicesSection } = await useAsyncData("services-section", () =>
-    queryContent(`/${currentLocale}/home/services-section`).findOne()
+// Watch for locale changes and refetch header data
+const { data: servicesSection } = await useAsyncData(
+    "services-section",
+    () =>
+        queryContent(`/${currentLocale.value}/home/services-section`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 
 const canScrollPrev = ref(false);

@@ -1,37 +1,44 @@
 <template>
-  <div
-    class="hidden lg:flex justify-between mt-10 md:mt-12 lg:mt-16 border-y border-white/10 relative"
-  >
     <div
-      class="text-center my-10 md:my-12 lg:my-16 first:text-start last:text-end"
-      v-for="item in aboutSection?.statistics"
+        class="relative mt-10 hidden justify-between border-y border-white/10 md:mt-12 lg:mt-16 lg:flex"
     >
-      <p class="text-5xl font-extralight text-neutral-100">
-        {{ item?.number }}
-      </p>
-      <h3 class="text-base mt-8 font-light text-neutral-400">
-        {{ item?.title }}
-      </h3>
+        <div
+            class="my-10 text-center first:text-start last:text-end md:my-12 lg:my-16"
+            v-for="item in aboutSection?.statistics"
+        >
+            <p class="text-5xl font-extralight text-neutral-100">
+                {{ item?.number }}
+            </p>
+            <h3 class="mt-8 text-base font-light text-neutral-400">
+                {{ item?.title }}
+            </h3>
+        </div>
+        <div
+            class="absolute left-[20%] top-1/2 h-1/2 w-[1.5px] -translate-y-1/2 bg-white/10"
+        ></div>
+        <div
+            class="absolute left-[50%] top-1/2 h-1/2 w-[1.5px] -translate-y-1/2 bg-white/10"
+        ></div>
+        <div
+            class="absolute left-[80%] top-1/2 h-1/2 w-[1.5px] -translate-y-1/2 bg-white/10"
+        ></div>
     </div>
-    <div
-      class="absolute h-1/2 w-[1.5px] bg-white/10 left-[20%] top-1/2 -translate-y-1/2"
-    ></div>
-    <div
-      class="absolute h-1/2 w-[1.5px] bg-white/10 left-[50%] top-1/2 -translate-y-1/2"
-    ></div>
-    <div
-      class="absolute h-1/2 w-[1.5px] bg-white/10 left-[80%] top-1/2 -translate-y-1/2"
-    ></div>
-  </div>
 </template>
 
 <script setup>
-  const { locale } = useI18n();
-  const currentLocale = locale.value;
+const { locale } = useI18n();
+const currentLocale = computed(() => locale.value);
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 
-  const { data: aboutSection } = await useAsyncData("about-section", () =>
-    queryContent(`/${currentLocale}/home/about-section`).findOne()
-  );
+// Watch for locale changes and refetch header data
+const { data: aboutSection } = await useAsyncData(
+    "about-section",
+    () => queryContent(`/${currentLocale.value}/home/about-section`).findOne(),
+    {
+        watch: [currentLocale],
+    }
+);
 </script>
 
 <style scoped></style>

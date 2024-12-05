@@ -127,13 +127,17 @@ useHead({
     title: "Transcend AI - Contact Us",
 });
 
-// Get the current locale from i18n
 const { locale } = useI18n();
+const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
-const currentLocale = locale.value;
 
-const { data: contactUs } = await useAsyncData("contact-us", () =>
-    queryContent(`/${currentLocale}/shared/contact-us`).findOne()
+// Watch for locale changes and refetch header data
+const { data: contactUs } = await useAsyncData(
+    "contact-us",
+    () => queryContent(`/${currentLocale.value}/shared/contact-us`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 
 // form control

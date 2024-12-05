@@ -55,12 +55,17 @@
 
 <script setup>
 import emblaCarouselVue from "embla-carousel-vue";
-
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 
-const { data: storeLocations } = await useAsyncData("store-locations", () =>
-    queryContent(`/${currentLocale}/home/store-locations`).findOne()
+// Watch for locale changes and refetch header data
+const { data: storeLocations } = await useAsyncData(
+    "store-locations",
+    () =>
+        queryContent(`/${currentLocale.value}/home/store-locations`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 
 // Embla Carousel Start

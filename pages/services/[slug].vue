@@ -27,14 +27,20 @@
 
 <script setup>
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
+const localePath = useLocalePath();
 
-const route = useRoute();
-console.log(route.params.slug);
-
-const article = await queryContent(`/${currentLocale}/products-and-services`)
-    .where({ path: route.params.slug })
-    .findOne();
+// Watch for locale changes and refetch article data
+const { data: article } = await useAsyncData(
+    "service-article",
+    () =>
+        queryContent(`/${currentLocale.value}/products-and-services`)
+            .where({ path: route.params.slug })
+            .findOne(),
+    {
+        watch: [currentLocale],
+    }
+);
 
 useSeoMeta({
     title: `${article.title}`,

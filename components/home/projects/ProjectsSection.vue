@@ -55,11 +55,18 @@
 
 <script setup>
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 
-const { data: projectsSection } = await useAsyncData("projects-section", () =>
-    queryContent(`/${currentLocale}/home/projects-section`).findOne()
+// Watch for locale changes and refetch header data
+const { data: projectsSection } = await useAsyncData(
+    "projects-section",
+    () =>
+        queryContent(`/${currentLocale.value}/home/projects-section`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

@@ -67,11 +67,15 @@
 import Logo from "./Logo.vue";
 
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-const { data: footer } = await useAsyncData("footer", () =>
-    queryContent(`/${currentLocale}/shared/footer`).findOne()
+const { data: footer } = await useAsyncData(
+    "footer",
+    () => queryContent(`/${currentLocale.value}/shared/footer`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

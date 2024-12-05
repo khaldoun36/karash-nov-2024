@@ -26,13 +26,14 @@ export default defineNuxtConfig({
     // Internationalization Options Start
     i18n: {
         locales: [
-            { code: "en", language: "en-US", name: "EN" },
-            { code: "ar", language: "ar-AE", name: "AR" },
-            { code: "ku", language: "ku-TR", name: "KU" },
-            { code: "tr", language: "tr-TR", name: "TR" },
+            { code: "en", language: "en-US", name: "EN", dir: "ltr" },
+            { code: "ar", language: "ar-AE", name: "AR", dir: "rtl" },
+            { code: "ku", language: "ku-TR", name: "KU", dir: "rtl" },
+            { code: "tr", language: "tr-TR", name: "TR", dir: "ltr" },
         ],
         strategy: "prefix_except_default",
         defaultLocale: "en",
+        // baseUrl: "https://your-domain.com",
     },
     // Internationalization Options end
 

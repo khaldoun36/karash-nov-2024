@@ -3,7 +3,9 @@
         <h2 class="max-w-[40ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ projectsSection?.title }}
         </h2>
-        <div class="mt-5 divide-y divide-white/10 md:mt-6 lg:mt-8">
+        <div
+            class="mt-5 grid gap-8 divide-y divide-white/10 md:mt-6 lg:mt-8 lg:gap-0"
+        >
             <ContentList :path="`/${currentLocale}/projects`" v-slot="{ list }">
                 <div
                     v-for="article in list.slice(0, 3)"

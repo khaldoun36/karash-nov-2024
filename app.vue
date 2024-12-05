@@ -1,16 +1,24 @@
 <template>
-    <div class="wrapper">
-        <NuxtPage />
-    </div>
+    <Html :lang="htmlAttrs.lang" :dir="htmlAttrs.dir">
+        <PrimaryHeader />
+        <div class="wrapper">
+            <NuxtPage />
+        </div>
 
-    <PrimaryFooter />
+        <PrimaryFooter />
+    </Html>
 </template>
 
 <script setup>
+import PrimaryHeader from "./components/shared/PrimaryHeader.vue";
 import PrimaryFooter from "./components/shared/PrimaryFooter.vue";
 
-const { locale } = useI18n();
-const currentLocale = locale.value;
+const head = useLocaleHead({
+    addDirAttribute: true, // Adds dir
+    addSeoAttributes: true, // Adds lang
+});
+
+const htmlAttrs = computed(() => head.value.htmlAttrs);
 </script>
 
 <style>

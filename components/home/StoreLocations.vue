@@ -1,5 +1,5 @@
 <template>
-    <section class="breakout mt-20 md:mt-24 lg:mt-32">
+    <section class="breakout mt-20 md:mt-24 lg:mt-32" id="storeLocations">
         <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ storeLocations?.title }}
         </h2>

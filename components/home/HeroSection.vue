@@ -24,14 +24,14 @@
             </p>
             <div class="mx-auto mt-10 flex gap-8">
                 <NuxtLink
-                    to="https://www.theverge.com/"
+                    :to="localePath('/contact-us')"
                     class="btn"
                     data-variant="primary"
                 >
                     {{ heroSection?.btnCta }}</NuxtLink
                 >
                 <NuxtLink
-                    to="https://www.theverge.com/"
+                    :to="localePath('/about-us')"
                     class="btn"
                     data-variant="secondary"
                 >
@@ -45,6 +45,7 @@
 <script setup>
 const { locale } = useI18n();
 const currentLocale = locale.value;
+const localePath = useLocalePath();
 
 const { data: heroSection } = await useAsyncData("hero-section", () =>
     queryContent(`/${currentLocale}/home/hero-section`).findOne()

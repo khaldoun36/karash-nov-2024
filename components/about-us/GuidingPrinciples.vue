@@ -5,10 +5,10 @@
         </h2>
         <AccordionRoot
             class="mt-20 divide-y divide-white/10 md:mt-24 lg:mt-32"
-            :default-value="'item-1'"
+            default-value="'item-1'"
             type="single"
             :collapsible="true"
-            :use-id="id"
+            :data-id="uniqueId"
         >
             <AccordionItem
                 v-for="principle in guidingPrinciples?.principles"
@@ -34,7 +34,6 @@
                 >
                     <p
                         v-for="description in principle.description"
-                        :key="description"
                         class="text-base md:text-lg"
                     >
                         {{ description }}
@@ -54,7 +53,7 @@ import {
     AccordionTrigger,
 } from "radix-vue";
 
-const id = useId();
+const uniqueId = useId();
 
 // Get current locale
 const { locale } = useI18n();

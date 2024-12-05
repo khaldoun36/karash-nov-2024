@@ -5,7 +5,7 @@
             alt="About us"
             width="3000"
             height="1687.50"
-            class="aspect-[4/3] h-auto max-h-[600px] w-full rounded border border-white/10 object-cover brightness-90 md:aspect-video 2xl:max-h-[720px]"
+            class="aspect-[4/3] h-auto max-h-[720px] w-full rounded border border-white/10 object-cover brightness-90 md:aspect-video 2xl:max-h-[720px]"
         />
         <div class="wrapper">
             <HeroSection />

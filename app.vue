@@ -1,6 +1,7 @@
 <template>
     <Html :lang="htmlAttrs.lang" :dir="htmlAttrs.dir">
-        <PrimaryHeader />
+        <MobileHeader v-if="width <= 1024" />
+        <PrimaryHeader v-if="width >= 1024" />
         <div class="wrapper">
             <NuxtPage />
         </div>
@@ -11,6 +12,7 @@
 
 <script setup>
 import PrimaryHeader from "./components/shared/PrimaryHeader.vue";
+import MobileHeader from "./components/shared/MobileHeader.vue";
 import PrimaryFooter from "./components/shared/PrimaryFooter.vue";
 
 const head = useLocaleHead({
@@ -19,6 +21,8 @@ const head = useLocaleHead({
 });
 
 const htmlAttrs = computed(() => head.value.htmlAttrs);
+
+const { width } = useWindowSize();
 </script>
 
 <style>

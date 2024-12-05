@@ -1,0 +1,158 @@
+<template>
+    <div
+        ref="headerRef"
+        class="full-width wrapper fixed left-0 right-0 top-0 z-50 border-b border-white/0 pb-4 pt-6 transition-colors duration-300 lg:!hidden"
+        :class="{
+            'border-white/10': isScrolled,
+        }"
+    >
+        <div
+            class="full-width absolute inset-0 -z-10 bg-neutral-900/70 opacity-0 backdrop-blur-md transition-opacity duration-300"
+            :class="{
+                'opacity-100': isScrolled,
+            }"
+        ></div>
+        <header class="flex items-center justify-between">
+            <NuxtLink :to="localePath('/')" aria-label="Home">
+                <Logo />
+            </NuxtLink>
+
+            <!-- Hamburger Menu Button -->
+            <button
+                class="z-50 flex flex-col gap-1.5 p-2"
+                @click="isMenuOpen = !isMenuOpen"
+                aria-label="Toggle menu"
+            >
+                <span
+                    class="h-0.5 w-6 bg-white transition-transform duration-300"
+                    :class="{ 'translate-y-2 rotate-45': isMenuOpen }"
+                ></span>
+                <span
+                    class="h-0.5 w-6 bg-white transition-opacity duration-300"
+                    :class="{ 'opacity-0': isMenuOpen }"
+                ></span>
+                <span
+                    class="h-0.5 w-6 bg-white transition-transform duration-300"
+                    :class="{ '-translate-y-2 -rotate-45': isMenuOpen }"
+                ></span>
+            </button>
+        </header>
+
+        <!-- Mobile Navigation Menu -->
+        <div
+            class="fixed inset-0 z-40 transform bg-neutral-900/70 backdrop-blur-md transition-transform duration-300 ease-in-out"
+            :class="isMenuOpen ? 'translate-y-0' : '-translate-y-full'"
+        >
+            <div class="flex h-full flex-col pt-24">
+                <nav class="flex flex-col items-start gap-8 px-6">
+                    <NuxtLink
+                        v-for="link in header.header_navigation.slice(0, -1)"
+                        :key="link.link"
+                        :to="localePath(link.link)"
+                        class="text-3xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                        @click="isMenuOpen = false"
+                    >
+                        {{ link.title }}
+                    </NuxtLink>
+
+                    <!-- Services Dropdown -->
+                    <div class="flex flex-col items-start gap-4">
+                        <span class="text-3xl font-medium text-neutral-100">
+                            {{
+                                header.header_navigation[
+                                    header.header_navigation.length - 1
+                                ].title
+                            }}
+                        </span>
+                        <div class="flex flex-col items-start gap-4">
+                            <NuxtLink
+                                v-for="link in header.header_navigation[
+                                    header.header_navigation.length - 1
+                                ].sub_items"
+                                :key="link.title"
+                                :to="localePath(link.link)"
+                                class="ps-4 text-xl font-medium text-neutral-100/80 transition-colors hover:text-neutral-400"
+                                @click="isMenuOpen = false"
+                            >
+                                - {{ link.title }}
+                            </NuxtLink>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="mt-20 flex flex-col items-center gap-10 px-6 pb-12">
+                    <!-- Language Selector -->
+                    <div class="flex gap-8">
+                        <NuxtLink
+                            v-for="lang in ['en', 'ar', 'ku', 'tr']"
+                            :key="lang"
+                            :to="switchLocalePath(lang)"
+                            class="text-2xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                            @click="isMenuOpen = false"
+                        >
+                            {{ lang.toUpperCase() }}
+                        </NuxtLink>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <NuxtLink
+                        :to="localePath(header.cta.link)"
+                        class="btn !min-w-full scale-y-125 text-center"
+                        data-variant="primary"
+                        @click="isMenuOpen = false"
+                    >
+                        {{ header.cta.title }}
+                    </NuxtLink>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script setup>
+import Logo from "./Logo.vue";
+const { locale } = useI18n();
+const currentLocale = computed(() => locale.value);
+const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
+
+// Watch for locale changes and refetch header data
+const { data: header } = await useAsyncData(
+    "header",
+    () => queryContent(`/${currentLocale.value}/shared/header`).findOne(),
+    {
+        watch: [currentLocale],
+    }
+);
+
+const headerRef = ref(null);
+const isScrolled = ref(false);
+const isMenuOpen = ref(false);
+
+// Lock body scroll when menu is open
+watch(isMenuOpen, (newVal) => {
+    if (newVal) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
+});
+
+onMounted(() => {
+    const handleScroll = () => {
+        isScrolled.value = window.scrollY > 100;
+    };
+
+    // Check scroll position immediately
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up
+    onUnmounted(() => {
+        window.removeEventListener("scroll", handleScroll);
+    });
+});
+</script>
+
+<style scoped></style>

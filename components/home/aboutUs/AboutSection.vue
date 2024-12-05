@@ -26,8 +26,6 @@ import DesktopAchievments from "./DesktopAchievments.vue";
 
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
-const localePath = useLocalePath();
-const switchLocalePath = useSwitchLocalePath();
 
 // Watch for locale changes and refetch header data
 const { data: aboutSection } = await useAsyncData(

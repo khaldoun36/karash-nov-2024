@@ -28,7 +28,6 @@
 <script setup>
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
-const localePath = useLocalePath();
 
 // Watch for locale changes and refetch article data
 const { data: article } = await useAsyncData(

@@ -57,12 +57,18 @@ const uniqueId = useId();
 
 // Get current locale
 const { locale } = useI18n();
-const currentLocale = locale.value;
+const currentLocale = computed(() => locale.value);
 
 // CMS data import
 const { data: guidingPrinciples } = await useAsyncData(
     "guiding-principles",
-    () => queryContent(`/${currentLocale}/about/guiding-principles`).findOne()
+    () =>
+        queryContent(
+            `/${currentLocale.value}/about/guiding-principles`
+        ).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

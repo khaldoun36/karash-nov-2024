@@ -1,7 +1,7 @@
 <template>
     <main class="full-width px-2 pt-2">
         <NuxtImg
-            src="/about-us/hero-image.jpeg"
+            :src="aboutUsImage"
             alt="About us"
             width="3000"
             height="1687.50"
@@ -21,6 +21,8 @@ import HeroSection from "@/components/about-us/HeroSection.vue";
 import MobileAchievements from "~/components/home/aboutUs/MobileAchievements.vue";
 import DesktopAchievments from "~/components/home/aboutUs/DesktopAchievments.vue";
 import GuidingPrinciples from "~/components/about-us/GuidingPrinciples.vue";
+
+import aboutUsImage from "/about-us/hero-image.jpeg";
 </script>
 
 <style scoped></style>

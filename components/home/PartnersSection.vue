@@ -1,6 +1,6 @@
 <template>
     <section class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16">
-        <div class="wrapper mt-10 grid place-items-center text-center">
+        <div class="mt-10 grid place-items-center text-center">
             <h2 class="text-xl !text-neutral-400">
                 {{ partnersSection?.title }}
             </h2>
@@ -11,7 +11,7 @@
             :class="{ 'fade-in': isVisible }"
             :style="{ '--num-items': cleanedImagesPath.length }"
         >
-            <ul class="marquee-track">
+            <ul class="marquee-track mx-auto">
                 <li
                     class="marquee-item"
                     v-for="(path, index) in cleanedImagesPath"

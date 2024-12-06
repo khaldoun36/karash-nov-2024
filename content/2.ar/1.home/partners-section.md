@@ -1,3 +1,3 @@
 ---
-title: "İş Ortaklarımız"
+title: "شركاؤنا"
 ---

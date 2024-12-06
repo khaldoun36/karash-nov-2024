@@ -79,16 +79,24 @@
                             :side-offset="10"
                         >
                             <div class="flex flex-col space-y-4">
-                                <NuxtLink :to="switchLocalePath('en')"
+                                <NuxtLink
+                                    :to="switchLocalePath('en')"
+                                    @click="reloadNuxtApp()"
                                     >EN</NuxtLink
                                 >
-                                <NuxtLink :to="switchLocalePath('ar')"
+                                <NuxtLink
+                                    :to="switchLocalePath('ar')"
+                                    @click="reloadNuxtApp()"
                                     >AR</NuxtLink
                                 >
-                                <NuxtLink :to="switchLocalePath('ku')"
+                                <NuxtLink
+                                    :to="switchLocalePath('ku')"
+                                    @click="reloadNuxtApp()"
                                     >KU</NuxtLink
                                 >
-                                <NuxtLink :to="switchLocalePath('tr')"
+                                <NuxtLink
+                                    :to="switchLocalePath('tr')"
+                                    @click="reloadNuxtApp()"
                                     >TR</NuxtLink
                                 >
                             </div>

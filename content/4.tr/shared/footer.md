@@ -1,29 +1,29 @@
 ---
 footer_navigation:
-    - section_title: "Company"
+    - section_title: "Kurumsal"
       section_links:
           - page_url: "/about-us"
-            link_text: "About Us"
+            link_text: "Hakkımızda"
           - page_url: "/projects"
-            link_text: "Our Projects"
+            link_text: "Projelerimiz"
           - page_url: "/"
-            link_text: "Career Opportunities"
+            link_text: "Kariyer Fırsatları"
 
-    - section_title: "Products and Services"
+    - section_title: "Ürün ve Hizmetler"
       section_links:
           - page_url: "/services/stylish-kitchen-and-furniture-designs"
-            link_text: "Kitchen Design Solutions"
+            link_text: "Mutfak Tasarım Çözümleri"
           - page_url: "/services/exclusive-interior-design-solutions"
-            link_text: "Interior Decoration Services"
+            link_text: "İç Dekorasyon Hizmetleri"
           - page_url: "/services/wood-and-alabaster-solutions"
-            link_text: "Custom Manufacturing"
+            link_text: "Özel Üretim"
 
-    - section_title: "Customer Resources"
+    - section_title: "Müşteri Kaynakları"
       section_links:
           - page_url: "/contact-us"
-            link_text: "Contact Our Team"
+            link_text: "Ekibimizle İletişime Geçin"
           - page_url: "/contact-us"
-            link_text: "After-Sales Support"
+            link_text: "Satış Sonrası Destek"
           - page_url: "/#storeLocations"
-            link_text: "Find Our Locations"
+            link_text: "Mağazalarımızı Bulun"
 ---

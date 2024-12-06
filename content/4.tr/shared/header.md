@@ -1,23 +1,23 @@
 ---
 header_navigation:
-    - title: "Home"
+    - title: "Ana Sayfa"
       link: "/"
-    - title: "About Us"
+    - title: "Hakkımızda"
       link: "/about-us"
-    - title: "Projects"
+    - title: "Projelerimiz"
       link: "/projects"
-    - title: "Locations"
+    - title: "Mağazalarımız"
       link: "/#storeLocations"
-    - title: "Products & Services"
+    - title: "Ürün ve Hizmetler"
       sub_items:
-          - title: "Kitchen Design Solutions"
+          - title: "Mutfak Tasarım Çözümleri"
             link: "/services/stylish-kitchen-and-furniture-designs"
-          - title: "Interior Decoration Services"
+          - title: "İç Dekorasyon Hizmetleri"
             link: "/services/exclusive-interior-design-solutions"
-          - title: "Custom Manufacturing"
+          - title: "Özel Üretim"
             link: "/services/wood-and-alabaster-solutions"
 
 cta:
-    title: "Contact us"
+    title: "İletişime Geçin"
     link: "/contact-us"
 ---

@@ -1,10 +1,10 @@
 ---
-formTitle: "Connect with Our Expert Team"
-formDescription: "Need help with one of our products? Ready to bring your project vision to life? Let's discuss how we can help."
+formTitle: "Uzman Ekibimizle İletişime Geçin"
+formDescription: "Ürünlerimizle ilgili yardıma mı ihtiyacınız var? Proje vizyonunuzu hayata geçirmeye hazır mısınız? Nasıl yardımcı olabileceğimizi konuşalım."
 options:
-    - label: "After Sales Support"
+    - label: "Satış Sonrası Destek"
       value: "after-sales-support"
-    - label: "Service Inquiry"
+    - label: "Hizmet Talebi"
       value: "service-inquiry"
-btnText: "Send message"
+btnText: "Mesaj gönder"
 ---

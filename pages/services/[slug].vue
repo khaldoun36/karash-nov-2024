@@ -32,9 +32,9 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
 const { data: article, error } = await useAsyncData(
-    "products-and-services",
+    "services-article",
     () =>
-        queryContent(`/${currentLocale.value}/products-and-services`)
+        queryContent(`/${currentLocale.value}/services`)
             .where({ path: route.params.slug })
             .findOne(),
     {

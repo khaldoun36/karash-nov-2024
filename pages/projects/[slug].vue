@@ -48,9 +48,9 @@ const { data: article } = await useAsyncData(
 );
 
 useSeoMeta({
-    title: `${article.title}`,
-    description: `${article.description}`,
-    ogImage: `${article.thumbnail}`,
+    title: `${article.title}` || "Default Title",
+    description: `${article.description}` || "Default Description",
+    ogImage: `${article.thumbnail}` || "default-image.jpg",
 });
 </script>
 

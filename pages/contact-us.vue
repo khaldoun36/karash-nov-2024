@@ -124,7 +124,7 @@
 
 <script setup>
 useHead({
-    title: `${contactUs?.formTitle}`,
+    title: `${contactUs?.formTitle}` || "Contact Us",
 });
 
 const { locale } = useI18n();

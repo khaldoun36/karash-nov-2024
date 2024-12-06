@@ -15,14 +15,12 @@
                 </p>
             </div>
         </div>
-        <MobileAchievements />
-        <DesktopAchievments />
+        <PartnersSection />
     </section>
 </template>
 
 <script setup>
-import MobileAchievements from "./MobileAchievements.vue";
-import DesktopAchievments from "./DesktopAchievments.vue";
+import PartnersSection from "~/components/home/PartnersSection.vue";
 
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);

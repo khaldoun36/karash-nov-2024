@@ -124,7 +124,7 @@
 
 <script setup>
 useHead({
-    title: "Transcend AI - Contact Us",
+    title: `${contactUs?.formTitle}`,
 });
 
 const { locale } = useI18n();

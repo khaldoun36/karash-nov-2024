@@ -6,17 +6,17 @@
             <h1
                 class="max-w-[40ch] text-balance text-4xl md:text-7xl lg:text-7.5xl"
             >
-                {{ article.title }}
+                {{ article?.title }}
             </h1>
             <p class="mt-8 max-w-[45ch] text-balance text-base md:text-lg">
-                {{ article.description }}
+                {{ article?.description }}
             </p>
         </div>
         <div class="space-y-8 lg:row-start-1">
             <NuxtImg
-                v-for="image in article.images"
+                v-for="(image, index) in article.images"
                 :src="image"
-                :key="image"
+                :key="index"
                 width="3000"
                 height="4000"
                 class="aspect-[3/4] overflow-hidden rounded border border-white/10"
@@ -29,7 +29,6 @@
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-// Watch for locale changes and refetch article data
 const { data: article } = await useAsyncData(
     "products-and-services",
     () =>
@@ -42,9 +41,9 @@ const { data: article } = await useAsyncData(
 );
 
 useSeoMeta({
-    title: `${article.title}`,
-    description: `${article.description}`,
-    ogImage: `${article.images[0]}`,
+    title: article.value?.title || "Default Title",
+    description: article.value?.description || "Default Description",
+    ogImage: article.value?.images?.[0] || "default-image.jpg",
 });
 </script>
 

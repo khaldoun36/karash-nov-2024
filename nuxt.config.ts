@@ -39,7 +39,8 @@ export default defineNuxtConfig({
 
     // Image options start
     image: {
-        provider: "ipx",
+        provider: "netlify",
+        format: ["avif", "webp"],
     },
     // Image options end
 });

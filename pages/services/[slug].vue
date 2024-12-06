@@ -13,16 +13,6 @@
                 {{ article?.description }}
             </p>
         </div>
-        <div class="space-y-8 lg:row-start-1">
-            <NuxtImg
-                v-for="(image, index) in article.images"
-                :src="image"
-                :key="index"
-                width="3000"
-                height="4000"
-                class="aspect-[3/4] overflow-hidden rounded border border-white/10"
-            />
-        </div>
     </main>
     <div v-else>Loading... {{ error }}</div>
 </template>
@@ -46,11 +36,11 @@ if (error.value) {
     console.error("Failed to fetch article:", error.value);
     // Handle error, maybe redirect or show an error page
 }
-useSeoMeta({
-    title: article.value?.title || "Default Title",
-    description: article.value?.description || "Default Description",
-    ogImage: article.value?.images?.[0] || "default-image.jpg",
-});
+// useSeoMeta({
+//     title: article.value?.title || "Default Title",
+//     description: article.value?.description || "Default Description",
+//     ogImage: article.value?.images?.[0] || "default-image.jpg",
+// });
 </script>
 
 <style scoped></style>

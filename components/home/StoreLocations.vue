@@ -3,7 +3,11 @@
         <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ storeLocations?.title }}
         </h2>
-        <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
+        <div
+            class="embla mt-10 md:mt-12 lg:mt-16"
+            ref="emblaRef"
+            style="direction: ltr !important"
+        >
             <div class="embla__container">
                 <div
                     class="embla__slide group mr-6 flex aspect-square h-auto min-w-72 flex-col justify-end rounded border border-white/10 bg-neutral-900 p-8 md:mr-8"

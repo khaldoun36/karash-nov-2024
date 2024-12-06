@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 
     // Image options start
     image: {
-        provider: "netlify",
+        provider: "vercel",
         format: ["avif", "webp"],
     },
     // Image options end

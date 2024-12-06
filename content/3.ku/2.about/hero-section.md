@@ -1,9 +1,9 @@
 ---
-title: "Who we are"
+title: "ئێمە کێین"
 description:
-    - "At Karash Company, we're not just building furniture – we're crafting legacies. For nearly two decades, we've been transforming spaces and exceeding expectations. Since 2004, our passion has driven us to create extraordinary home environments that blend time-honored traditions with cutting-edge innovation."
+    - "لە کۆمپانیای کەرەش، ئێمە تەنها کەلوپەل دروست ناکەین - ئێمە میراتی داهاتوو دەنەخشێنین. بۆ نزیکەی دوو دەیە، ئێمە شوێنەکانمان گۆڕیوە و لە چاوەڕوانییەکان تێپەڕیوین. لە ساڵی ٢٠٠٤ـەوە، خولیامان هانی داوین بۆ دروستکردنی ژینگەی ماڵی نائاسایی کە نەریتە دێرینەکان لەگەڵ داهێنانی نوێ تێکەڵ دەکات."
 
-    - "Our journey is a testament to excellence. With five advanced manufacturing facilities – two in Turkey and three in Erbil – we've established ourselves as true industry pioneers. Our comprehensive capabilities extend beyond furniture, encompassing exclusive manufacturing of alabaster surfaces, electrical equipment, accessories, wallpapers, handrails, and custom wooden and iron doors. Our extensive network of eleven branches across Iraq positions us as a leading force in home design and manufacturing."
+    - "گەشتی ئێمە بەڵگەیە لەسەر بەرزی. بە پێنج کارگەی پێشکەوتووی بەرهەمهێنان - دوو لە تورکیا و سێ لە هەولێر - خۆمان وەک پێشەنگی ڕاستەقینەی پیشەسازی دامەزراندووە. تواناکانمان لە کەلوپەل تێدەپەڕێت، کە بەرهەمهێنانی تایبەتی ڕووکاری مەڕمەڕ، ئامێری کارەبایی، ئێکسسوارات، کاغەزی دیوار، شوێن دەست و دەرگای تایبەتی داری و ئاسن دەگرێتەوە. تۆڕی بەرفراوانی یازدە لقمان لە سەرتاسەری عێراق، ئێمەی کردووە بە هێزێکی پێشەنگ لە دیزاین و بەرهەمهێنانی ماڵ."
 
-    - "We're more than a company; we're visionaries committed to turning living spaces into extraordinary experiences. Our relentless pursuit of quality, combined with our ambitious plans for international expansion, reflects our unwavering dedication to bringing unparalleled elegance, functionality, and craftsmanship to every home we touch."
+    - "ئێمە زیاترین لە کۆمپانیایەک؛ ئێمە خاوەن دیدگاین کە پابەندین بە گۆڕینی شوێنی ژیان بۆ ئەزموونی نائاسایی. هەوڵی بەردەواممان بۆ کوالێتی، لەگەڵ پلانە بەرزەفڕەکانمان بۆ فراوانبوونی نێودەوڵەتی، پابەندبوونی نەگۆڕمان دەردەخات بۆ هێنانی جوانی، کارایی و پیشەگەری بێوێنە بۆ هەر ماڵێک کە دەستی لێ دەدەین."
 ---

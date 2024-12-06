@@ -1,25 +1,25 @@
 ---
-title: "Our Guiding Principles"
+title: "بنەما ڕێنیشاندەرەکانمان"
 
 principles:
-    - title: "Field of Work"
+    - title: "بواری کار"
       value: "item-1"
       description:
-          - "We stand as a leading manufacturer in Iraq, specializing in crafting home furnishings, kitchens, interior decor, and wood and artificial alabaster. We proudly hold exclusive international partnerships with commercial agencies in the sector, introducing unique products to the Iraqi market that were previously unavailable."
-          - "Our specialization spans across a comprehensive range of kitchen styles, including modern, classic, semi-classic, and luxury designs. Additionally, we excel in creating bespoke interior decor, doors, furnishings for educational and healthcare facilities, bedrooms, and exquisite artificial alabaster products. Leveraging prestigious global partnerships, we ensure top-notch quality and distinctiveness in areas such as lighting, wallpapers, and accessories sourced from esteemed Turkish and Italian origins."
-    - title: "Goal"
+          - "ئێمە وەک پێشەنگێکی بەرهەمهێنان لە عێراق دەوەستین، کە تایبەتمەندین لە دروستکردنی کەلوپەلی ماڵ، چێشتخانە، دیکۆری ناوخۆیی، و دار و مەڕمەڕی دەستکرد. بە شانازییەوە هاوبەشی تایبەتی نێودەوڵەتیمان هەیە لەگەڵ ئاژانسە بازرگانییەکان لەم کەرتەدا، کە بەرهەمی تایبەت دەهێنینە بازاڕی عێراق کە پێشتر بەردەست نەبوون."
+          - "پسپۆڕیەتی ئێمە کۆمەڵێک ستایلی چێشتخانە دەگرێتەوە، لەوانە دیزاینی مۆدێرن، کلاسیک، نیمچە-کلاسیک و لوکس. هەروەها، ئێمە لە دروستکردنی دیکۆری ناوخۆیی تایبەت، دەرگا، کەلوپەلی دامەزراوە پەروەردەیی و تەندروستییەکان، ژووری نووستن و بەرهەمە جوانەکانی مەڕمەڕی دەستکرد سەرکەوتووین. بە سوود وەرگرتن لە هاوبەشی جیهانی بەناوبانگ، دڵنیایی باشترین کوالێتی و تایبەتمەندی دەدەین لە بوارەکانی وەک ڕووناکی، کاغەزی دیوار و ئێکسسواراتی سەرچاوەگرتوو لە تورکیا و ئیتاڵیا."
+    - title: "ئامانج"
       value: "item-2"
       description:
-          - "Our primary objective is to solidify our name through the exceptional works we provide to our clients in Iraq and abroad. Guided by a well-organized plan, we seek to expand our activities, delivering our services across all parts Iraq, and beyond."
-          - "Our methodology revolves around a client-centric process that sets the foundation for excellence. We believe in forging collaborative partnerships with our clients, understanding their unique needs, and continuously refining our approach through feedback loops. By embracing innovation, adaptability, and open communication, we ensure that our final creations surpass expectations, embodying the shared vision of our clients and our commitment to excellence."
-    - title: "Vision"
+          - "ئامانجی سەرەکیمان بەهێزکردنی ناوەکەمانە لە ڕێگەی ئەو کارە نایابانەی کە پێشکەشی کڕیارەکانمان دەکەین لە عێراق و دەرەوە. بە ڕێنمایی پلانێکی باش ڕێکخراو، هەوڵ دەدەین چالاکییەکانمان فراوان بکەین و خزمەتگوزارییەکانمان بگەیەنینە هەموو بەشەکانی عێراق و دواتریش."
+          - "میتۆدۆلۆژیای ئێمە لەسەر پرۆسەیەکی کڕیار-تەوەر دەسووڕێتەوە کە بنچینەی داناوە بۆ بەرزی. باوەڕمان بە دروستکردنی هاوبەشی هاریکارانەیە لەگەڵ کڕیارەکانمان، تێگەیشتن لە پێداویستییە تایبەتەکانیان و بەردەوام پێشخستنی شێوازی کارکردنمان لە ڕێگەی وەرگرتنی فیدباکەوە. بە باوەشکردنەوە بۆ داهێنان، گونجاندن و پەیوەندی کراوە، دڵنیا دەبین کە داهێنانە کۆتاییەکانمان لە چاوەڕوانییەکان تێدەپەڕن و بینینی هاوبەشی کڕیارەکانمان و پابەندبوونمان بە بەرزییەوە دەردەخەن."
+    - title: "دیدگا"
       value: "item-3"
       description:
-          - "We strive to establish ourselves as the premier choice in the world of home furniture, kitchen design, and interior decor. Our methodology is rooted in delivering exceptional services with the utmost professionalism and industry-leading practices."
-          - "Central to our vision is the aspiration to extend our reach far and wide, ensuring that every space we touch reflects our dedication to quality and customer satisfaction. By embracing innovation, adaptability, and open communication, we aim to consistently exceed expectations and bring our clients' visions to life."
-    - title: "Quality"
+          - "هەوڵ دەدەین خۆمان وەک هەڵبژاردەی یەکەم دابمەزرێنین لە دنیای کەلوپەلی ماڵ، دیزاینی چێشتخانە و دیکۆری ناوخۆیی. میتۆدۆلۆژیای ئێمە لەسەر پێشکەشکردنی خزمەتگوزاری نایاب بە پڕۆفیشناڵترین شێوە و باشترین شێوازی پیشەسازی بنیات نراوە."
+          - "لە ناوەڕۆکی دیدگامان، خواستی فراوانکردنی دەستڕاگەیشتنمان هەیە بۆ هەموو لایەک، دڵنیابوون لەوەی کە هەر شوێنێک دەستی لێ دەدەین ڕەنگدانەوەی پابەندبوونمانە بە کوالێتی و ڕەزامەندی کڕیار. بە باوەشکردنەوە بۆ داهێنان، گونجاندن و پەیوەندی کراوە، ئامانجمان بەردەوام تێپەڕاندنی چاوەڕوانییەکان و زیندووکردنەوەی بینینی کڕیارەکانمانە."
+    - title: "کوالێتی"
       value: "item-4"
       description:
-          - "Our approach prioritizes quality and aesthetics, which we steadfastly uphold. We are dedicated to enhancing quality and precision in all our endeavors through a specialized process that continually updates to meet our customers' diverse needs. With extensive experience in designing, manufacturing, and executing home furniture projects, including kitchens and decor, we have been a trusted name in the industry since 2004."
-          - "Our commitment to excellence is reflected in our rigorous quality policy, which involves continuous inspection, stringent work control, and progress monitoring. We are deeply committed to ensuring customer satisfaction with the services we provide, always striving to exceed expectations through our attention to detail and dedication to superior craftsmanship."
+          - "شێوازی کارکردنمان گرنگی بە کوالێتی و جوانی دەدات، کە بە پێداگرییەوە پارێزگاری لێ دەکەین. ئێمە پابەندین بە باشترکردنی کوالێتی و وردی لە هەموو هەوڵەکانماندا لە ڕێگەی پرۆسەیەکی تایبەتمەندەوە کە بەردەوام نوێ دەبێتەوە بۆ دابینکردنی پێداویستییە جیاوازەکانی کڕیارەکانمان. بە ئەزموونێکی فراوان لە دیزاین، بەرهەمهێنان و جێبەجێکردنی پڕۆژەکانی کەلوپەلی ماڵ، لەوانە چێشتخانە و دیکۆر، ئێمە لە ساڵی ٢٠٠٤ـەوە ناوێکی متمانەپێکراوین لە پیشەسازییەکەدا."
+          - "پابەندبوونمان بە بەرزی لە سیاسەتی توندی کوالێتیماندا ڕەنگی داوەتەوە، کە پشکنینی بەردەوام، کۆنترۆڵی توندی کار و چاودێریکردنی پێشکەوتن لەخۆ دەگرێت. ئێمە بە قووڵی پابەندین بە دڵنیاکردنی ڕەزامەندی کڕیار لەو خزمەتگوزارییانەی پێشکەشی دەکەین، هەمیشە هەوڵ دەدەین لە چاوەڕوانییەکان تێپەڕین لە ڕێگەی گرنگیدان بە وردەکارییەکان و پابەندبوون بە پیشەگەری باڵا."
 ---

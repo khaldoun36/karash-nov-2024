@@ -1,3 +1,3 @@
 ---
-title: Projects that Inspire.
+title: پڕۆژەکان کە ئیلهامبەخشن.
 ---

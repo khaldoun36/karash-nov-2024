@@ -1,23 +1,23 @@
 ---
 header_navigation:
-    - title: "Home"
+    - title: "سەرەکی"
       link: "/"
-    - title: "About Us"
+    - title: "دەربارەی ئێمە"
       link: "/about-us"
-    - title: "Projects"
+    - title: "پڕۆژەکان"
       link: "/projects"
-    - title: "Locations"
+    - title: "شوێنەکان"
       link: "/#storeLocations"
-    - title: "Products & Services"
+    - title: "بەرهەم و خزمەتگوزارییەکان"
       sub_items:
-          - title: "Kitchen Design Solutions"
+          - title: "دیزاینی چێشتخانە"
             link: "/services/stylish-kitchen-and-furniture-designs"
-          - title: "Interior Decoration Services"
+          - title: "خزمەتگوزاری دیکۆری ناوخۆیی"
             link: "/services/exclusive-interior-design-solutions"
-          - title: "Custom Manufacturing"
+          - title: "دروستکردنی تایبەت"
             link: "/services/wood-and-alabaster-solutions"
 
 cta:
-    title: "Contact us"
+    title: "پەیوەندیمان پێوە بکە"
     link: "/contact-us"
 ---

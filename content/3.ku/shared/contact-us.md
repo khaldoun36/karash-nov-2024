@@ -1,10 +1,10 @@
 ---
-formTitle: "Connect with Our Expert Team"
-formDescription: "Need help with one of our products? Ready to bring your project vision to life? Let's discuss how we can help."
+formTitle: "پەیوەندی بکە بە تیمە شارەزاکەمانەوە"
+formDescription: "پێویستیت بە یارمەتی هەیە سەبارەت بە یەکێک لە بەرهەمەکانمان؟ ئامادەی بۆ هێنانەدی بیرۆکەی پڕۆژەکەت؟ با گفتوگۆ بکەین چۆن دەتوانین یارمەتیت بدەین."
 options:
-    - label: "After Sales Support"
+    - label: "پشتگیری دوای فرۆشتن"
       value: "after-sales-support"
-    - label: "Service Inquiry"
+    - label: "داواکاری خزمەتگوزاری"
       value: "service-inquiry"
-btnText: "Send message"
+btnText: "ناردنی پەیام"
 ---

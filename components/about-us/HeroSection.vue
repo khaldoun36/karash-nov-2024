@@ -23,8 +23,12 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
 // Watch for locale changes and refetch header data
-const { data: heroSection } = await useAsyncData("hero-section", () =>
-    queryContent(`/${currentLocale.value}/about/hero-section`).findOne()
+const { data: heroSection } = await useAsyncData(
+    "hero-section",
+    () => queryContent(`/${currentLocale.value}/about/hero-section`).findOne(),
+    {
+        watch: [currentLocale],
+    }
 );
 </script>
 

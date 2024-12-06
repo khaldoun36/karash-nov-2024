@@ -39,7 +39,6 @@ export default defineNuxtConfig({
 
     // Image options start
     image: {
-        dir: "assets/images",
         provider: "ipx",
     },
     // Image options end

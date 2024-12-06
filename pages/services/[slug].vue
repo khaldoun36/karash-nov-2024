@@ -27,6 +27,7 @@
     <div v-else>Loading... {{ error }}</div> -->
     <div class="mt-64">
         <h1>{{ route.params.slug }}</h1>
+        <h2>{{ article }}</h2>
     </div>
 </template>
 
@@ -35,7 +36,7 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const route = useRoute();
 
-const { data: article, error } = await useAsyncData(
+const { data: article } = await useAsyncData(
     "services-article",
     () =>
         queryContent(`/${currentLocale.value}/services`)
@@ -46,15 +47,11 @@ const { data: article, error } = await useAsyncData(
     }
 );
 
-if (error.value) {
-    console.error("Failed to fetch article:", error.value);
-    // Handle error, maybe redirect or show an error page
-}
-useSeoMeta({
-    title: article.value?.title || "Default Title",
-    description: article.value?.description || "Default Description",
-    ogImage: article.value?.images?.[0] || "default-image.jpg",
-});
+// useSeoMeta({
+//     title: article.value?.title || "Default Title",
+//     description: article.value?.description || "Default Description",
+//     ogImage: article.value?.images?.[0] || "default-image.jpg",
+// });
 </script>
 
 <style scoped></style>

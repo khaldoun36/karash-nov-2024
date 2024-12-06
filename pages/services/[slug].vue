@@ -1,6 +1,7 @@
 <template>
     <main
         class="relative mt-40 grid gap-10 md:mt-44 md:gap-12 lg:mt-52 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
+        v-if="article"
     >
         <div class="self-start lg:sticky lg:top-20 lg:col-start-2">
             <h1
@@ -23,13 +24,14 @@
             />
         </div>
     </main>
+    <div v-else>Loading... {{ error }}</div>
 </template>
 
 <script setup>
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-const { data: article } = await useAsyncData(
+const { data: article, error } = await useAsyncData(
     "products-and-services",
     () =>
         queryContent(`/${currentLocale.value}/products-and-services`)
@@ -40,6 +42,10 @@ const { data: article } = await useAsyncData(
     }
 );
 
+if (error.value) {
+    console.error("Failed to fetch article:", error.value);
+    // Handle error, maybe redirect or show an error page
+}
 useSeoMeta({
     title: article.value?.title || "Default Title",
     description: article.value?.description || "Default Description",

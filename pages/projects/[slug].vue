@@ -23,7 +23,7 @@
                 :key="image"
                 width="3000"
                 height="4000"
-                class="aspect-auto overflow-hidden rounded border border-white/10"
+                class="aspect-[3/4] overflow-hidden rounded border border-white/10"
             />
         </div>
     </main>

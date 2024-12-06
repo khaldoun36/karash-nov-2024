@@ -43,13 +43,13 @@
             class="fixed inset-0 z-40 transform bg-neutral-900/70 backdrop-blur-md transition-transform duration-300 ease-in-out"
             :class="isMenuOpen ? 'translate-y-0' : '-translate-y-full'"
         >
-            <div class="flex h-full flex-col pt-24">
+            <div class="flex h-full flex-col pt-16">
                 <nav class="flex flex-col items-start gap-8 px-6">
                     <NuxtLink
                         v-for="link in header.header_navigation.slice(0, -1)"
                         :key="link.link"
                         :to="localePath(link.link)"
-                        class="text-3xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                        class="text-2xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
                         @click="isMenuOpen = false"
                     >
                         {{ link.title }}
@@ -57,7 +57,7 @@
 
                     <!-- Services Dropdown -->
                     <div class="flex flex-col items-start gap-4">
-                        <span class="text-3xl font-medium text-neutral-100">
+                        <span class="text-2xl font-medium text-neutral-100">
                             {{
                                 header.header_navigation[
                                     header.header_navigation.length - 1
@@ -71,7 +71,7 @@
                                 ].sub_items"
                                 :key="link.title"
                                 :to="localePath(link.link)"
-                                class="ps-4 text-xl font-medium text-neutral-100/80 transition-colors hover:text-neutral-400"
+                                class="ps-4 text-lg font-medium text-neutral-100/80 transition-colors hover:text-neutral-400"
                                 @click="isMenuOpen = false"
                             >
                                 - {{ link.title }}
@@ -80,14 +80,14 @@
                     </div>
                 </nav>
 
-                <div class="mt-20 flex flex-col items-center gap-10 px-6 pb-12">
+                <div class="mt-auto flex flex-col items-center gap-8 px-6 py-5">
                     <!-- Language Selector -->
                     <div class="flex gap-8">
                         <NuxtLink
                             v-for="lang in ['en', 'ar', 'ku', 'tr']"
                             :key="lang"
                             :to="switchLocalePath(lang)"
-                            class="text-2xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                            class="text-lg font-medium text-neutral-100 transition-colors hover:text-neutral-400"
                             @click="isMenuOpen = false"
                         >
                             {{ lang.toUpperCase() }}
@@ -97,7 +97,7 @@
                     <!-- CTA Button -->
                     <NuxtLink
                         :to="localePath(header.cta.link)"
-                        class="btn !min-w-full scale-y-125 text-center"
+                        class="btn !min-w-full text-center"
                         data-variant="primary"
                         @click="isMenuOpen = false"
                     >

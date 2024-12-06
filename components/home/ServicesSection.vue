@@ -6,7 +6,7 @@
         <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
             <div class="embla__container">
                 <NuxtLink
-                    class="embla__slide group mr-6 flex flex-col md:mr-8"
+                    class="embla__slide group me-6 flex flex-col md:me-8"
                     v-for="service in servicesSection?.services"
                     :key="service.title"
                     :to="localePath(`/services/${service.linkPath}`)"
@@ -19,7 +19,11 @@
                         class="mt-6 flex items-center gap-4 text-neutral-100 transition-all group-hover:gap-5 group-hover:text-neutral-400"
                     >
                         <Icon
-                            name="heroicons:arrow-right-20-solid"
+                            :name="
+                                isRTL
+                                    ? 'heroicons:arrow-left-20-solid'
+                                    : 'heroicons:arrow-right-20-solid'
+                            "
                             class="hidden md:block"
                             size="20px"
                         />
@@ -41,7 +45,14 @@
                         'cursor-not-allowed opacity-50': !canScrollPrev,
                     }"
                 >
-                    <Icon name="heroicons:chevron-left-20-solid" size="28px" />
+                    <Icon
+                        :name="
+                            isRTL
+                                ? 'heroicons:chevron-right-20-solid'
+                                : 'heroicons:chevron-left-20-solid'
+                        "
+                        size="28px"
+                    />
                 </button>
                 <button
                     class="embla__next flex size-12 items-center justify-center rounded-full bg-neutral-900"
@@ -50,7 +61,14 @@
                         'cursor-not-allowed opacity-50': !canScrollNext,
                     }"
                 >
-                    <Icon name="heroicons:chevron-right-20-solid" size="28px" />
+                    <Icon
+                        :name="
+                            isRTL
+                                ? 'heroicons:chevron-left-20-solid'
+                                : 'heroicons:chevron-right-20-solid'
+                        "
+                        size="28px"
+                    />
                 </button>
             </div>
         </div>
@@ -63,6 +81,11 @@ import emblaCarouselVue from "embla-carousel-vue";
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
+
+// Check if current locale is RTL
+const isRTL = computed(() => {
+    return ["ar", "ku"].includes(currentLocale.value);
+});
 
 // Watch for locale changes and refetch header data
 const { data: servicesSection } = await useAsyncData(
@@ -80,6 +103,7 @@ const canScrollNext = ref(true);
 const [emblaRef, emblaApi] = emblaCarouselVue({
     loop: false,
     align: "start",
+    direction: isRTL.value ? "rtl" : "ltr",
 });
 
 onMounted(() => {

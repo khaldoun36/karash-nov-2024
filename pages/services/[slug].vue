@@ -18,8 +18,8 @@
                 v-for="(image, index) in article.images"
                 :src="image"
                 :key="index"
-                width="3000"
-                height="4000"
+                width="1280"
+                height="1706.67"
                 class="aspect-[3/4] overflow-clip rounded border border-white/10"
             />
         </div>

@@ -3,14 +3,10 @@
         <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ storeLocations?.title }}
         </h2>
-        <div
-            class="embla mt-10 md:mt-12 lg:mt-16"
-            ref="emblaRef"
-            style="direction: ltr !important"
-        >
+        <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
             <div class="embla__container">
                 <div
-                    class="embla__slide group mr-6 flex aspect-square h-auto min-w-72 flex-col justify-end rounded border border-white/10 bg-neutral-900 p-8 md:mr-8"
+                    class="embla__slide group me-6 flex aspect-square h-auto min-w-72 flex-col justify-end rounded border border-white/10 bg-neutral-900 p-8 md:me-8"
                     v-for="location in storeLocations?.locations"
                     :key="location.numberLink"
                 >
@@ -41,7 +37,14 @@
                         'cursor-not-allowed opacity-50': !canScrollPrev,
                     }"
                 >
-                    <Icon name="heroicons:chevron-left-20-solid" size="28px" />
+                    <Icon
+                        :name="
+                            isRTL
+                                ? 'heroicons:chevron-right-20-solid'
+                                : 'heroicons:chevron-left-20-solid'
+                        "
+                        size="28px"
+                    />
                 </button>
                 <button
                     class="embla__next flex size-12 items-center justify-center rounded-full bg-neutral-900"
@@ -50,7 +53,14 @@
                         'cursor-not-allowed opacity-50': !canScrollNext,
                     }"
                 >
-                    <Icon name="heroicons:chevron-right-20-solid" size="28px" />
+                    <Icon
+                        :name="
+                            isRTL
+                                ? 'heroicons:chevron-left-20-solid'
+                                : 'heroicons:chevron-right-20-solid'
+                        "
+                        size="28px"
+                    />
                 </button>
             </div>
         </div>
@@ -61,6 +71,11 @@
 import emblaCarouselVue from "embla-carousel-vue";
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
+
+// Check if current locale is RTL
+const isRTL = computed(() => {
+    return ["ar", "ku"].includes(currentLocale.value);
+});
 
 // Watch for locale changes and refetch header data
 const { data: storeLocations } = await useAsyncData(
@@ -79,6 +94,7 @@ const canScrollNext = ref(true);
 const [emblaRef, emblaApi] = emblaCarouselVue({
     loop: false,
     align: "start",
+    direction: isRTL.value ? "rtl" : "ltr",
 });
 
 onMounted(() => {

@@ -21,8 +21,8 @@
                 v-for="image in article.images"
                 :src="image"
                 :key="image"
-                width="3000"
-                height="4000"
+                width="1280"
+                height="1706.67"
                 class="aspect-[3/4] overflow-hidden rounded border border-white/10"
             />
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <main
+    <!-- <main
         class="relative mt-40 grid gap-10 md:mt-44 md:gap-12 lg:mt-52 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
         v-if="article"
     >
@@ -20,11 +20,14 @@
                 :key="index"
                 width="3000"
                 height="4000"
-                class="aspect-[3/4] overflow-hidden rounded border border-white/10"
+                class="aspect-[3/4] overflow-clip rounded border border-white/10"
             />
         </div>
     </main>
-    <div v-else>Loading... {{ error }}</div>
+    <div v-else>Loading... {{ error }}</div> -->
+    <div class="mt-64">
+        <h1>{{ route.params.slug }}</h1>
+    </div>
 </template>
 
 <script setup>

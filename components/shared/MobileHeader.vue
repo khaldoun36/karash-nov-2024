@@ -88,10 +88,7 @@
                             :key="lang"
                             :to="switchLocalePath(lang)"
                             class="text-2xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
-                            @click="
-                                isMenuOpen = false;
-                                reloadNuxtApp();
-                            "
+                            @click="isMenuOpen = false"
                         >
                             {{ lang.toUpperCase() }}
                         </NuxtLink>

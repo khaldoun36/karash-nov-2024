@@ -20,10 +20,12 @@
                     </NuxtLink>
 
                     <NuxtLink
-                        :to="`tel:${location.phoneNumber}`"
-                        class="ansition-colors mt-6 hover:text-neutral-600"
+                        v-for="phone in location.phones"
+                        :to="`tel:${phone.link}`"
+                        class="ansition-colors mt-6 self-start hover:text-neutral-600"
+                        style="direction: ltr !important"
                     >
-                        {{ location.phoneNumber }}
+                        {{ phone.number }}
                     </NuxtLink>
                 </div>
             </div>

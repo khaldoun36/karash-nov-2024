@@ -8,7 +8,7 @@
         <div
             ref="marqueeRef"
             class="marquee fadeout-horizontal"
-            :class="{ 'fade-in': isVisible }"
+            :class="{ 'fade-in': isVisible, rtl: isRTL }"
             :style="{ '--num-items': cleanedImagesPath.length }"
         >
             <ul class="marquee-track mx-auto">
@@ -47,6 +47,11 @@ const cleanedImagesPath = removePublicFromPaths(imagesPath);
 
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
+
+// Check if current locale is RTL
+const isRTL = computed(
+    () => currentLocale.value === "ku" || currentLocale.value === "ar"
+);
 
 // Fetch the partners section content for the current locale
 // This uses the `useAsyncData` composable to query the content
@@ -167,5 +172,9 @@ onMounted(() => {
     to {
         transform: translateX(calc(-100cqw - 100%));
     }
+}
+
+.rtl .marquee-item {
+    animation-direction: reverse;
 }
 </style>

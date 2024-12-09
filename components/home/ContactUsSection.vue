@@ -35,6 +35,8 @@ const { data: contactSection } = await useAsyncData(
         queryContent(`/${currentLocale.value}/home/contact-section`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 </script>

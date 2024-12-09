@@ -8,7 +8,7 @@
         <div
             ref="marqueeRef"
             class="marquee fadeout-horizontal"
-            :class="{ 'fade-in': isVisible, rtl: isRTL }"
+            :class="{ rtl: isRTL }"
             :style="{ '--num-items': cleanedImagesPath.length }"
         >
             <ul class="marquee-track mx-auto">
@@ -23,6 +23,8 @@
                         :alt="`Partner ${index + 1}`"
                         class="media-images__image h-auto w-16 object-contain !brightness-150 !grayscale"
                         @load="adjustImageWidth"
+                        width="400"
+                        height="400"
                     />
                 </li>
             </ul>
@@ -62,6 +64,8 @@ const { data: partnersSection } = await useAsyncData(
         queryContent(`/${currentLocale.value}/home/partners-section`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 
@@ -131,17 +135,6 @@ onMounted(() => {
         var(--mask-color, #333) 80%,
         transparent
     );
-
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
-}
-
-.marquee.fade-in {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .marquee-track {

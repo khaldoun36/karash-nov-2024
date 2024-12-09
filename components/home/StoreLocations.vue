@@ -86,6 +86,8 @@ const { data: storeLocations } = await useAsyncData(
         queryContent(`/${currentLocale.value}/home/store-locations`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 

@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     image: {
         provider: "vercel",
         format: ["avif", "webp"],
+        quality: 75,
         screens: {
             xs: 320,
             sm: 640,
@@ -49,6 +50,8 @@ export default defineNuxtConfig({
             xl: 1280,
             xxl: 1536,
         },
+        placeholder: true,
+        loading: "lazy",
     },
     // Image options end
 });

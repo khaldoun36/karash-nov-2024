@@ -1,4 +1,9 @@
 <template>
+    <Head>
+        <Title>{{ article?.title }}</Title>
+        <Meta name="description" :content="article?.description" />
+        <Meta property="og:image" :content="article?.images?.[0]" />
+    </Head>
     <main
         class="relative mt-40 grid gap-10 md:mt-44 md:gap-12 lg:mt-52 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
         v-if="article"
@@ -20,7 +25,7 @@
                 :key="index"
                 width="1280"
                 height="1706.67"
-                class="aspect-[3/4] overflow-clip rounded border border-white/10"
+                class="aspect-[3/4] overflow-clip rounded border border-white/10 object-cover"
             />
         </div>
     </main>
@@ -40,14 +45,10 @@ const { data: article } = await useAsyncData(
             .findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
-
-useSeoMeta({
-    title: article.value?.title || "Default Title",
-    description: article.value?.description || "Default Description",
-    ogImage: article.value?.images?.[0] || "default-image.jpg",
-});
 </script>
 
 <style scoped></style>

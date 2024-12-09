@@ -27,6 +27,8 @@ const { data: latestNews } = await useAsyncData(
     () => queryContent(`/${currentLocale.value}/home/latest-news`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 </script>

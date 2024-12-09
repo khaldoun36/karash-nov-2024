@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <Title>{{ pageTitle }}</Title>
+    </Head>
     <main class="wrapper py-24 pt-32 sm:pb-32 sm:pt-48">
         <div
             class="grid gap-16 rounded-lg border border-white/10 bg-neutral-900 p-8 shadow-sm lg:grid-cols-2"
@@ -123,10 +126,6 @@
 </template>
 
 <script setup>
-useHead({
-    title: `${contactUs?.formTitle}` || "Contact Us",
-});
-
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
@@ -137,9 +136,23 @@ const { data: contactUs } = await useAsyncData(
     () => queryContent(`/${currentLocale.value}/shared/contact-us`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 
+const pageTitle = computed(() => {
+    switch (currentLocale.value) {
+        case "tr":
+            return "Karash® Şirketi - İletişim";
+        case "ar":
+            return "شركة كاراش® - تواصل معنا";
+        case "ku":
+            return "کۆمپانیای کاراش® - پەیوەندی";
+        default:
+            return "Karash® Company - Contact Us";
+    }
+});
 // form control
 import { ref } from "vue";
 const WEB3FORMS_ACCESS_KEY = "63da4544-2ce2-4fa9-9cee-b51a2927b918";

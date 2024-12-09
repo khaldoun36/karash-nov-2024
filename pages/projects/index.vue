@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <Title>{{ pageTitle }}</Title>
+    </Head>
     <main class="mt-40 md:mt-44 lg:mt-52">
         <h1
             class="mx-auto max-w-[20ch] text-balance text-center text-4xl md:text-7xl lg:text-7.5xl"
@@ -64,8 +67,23 @@ const { data: projectsHeroSection } = await useAsyncData(
     () => queryContent(`/${currentLocale.value}/projects/general`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
+
+const pageTitle = computed(() => {
+    switch (currentLocale.value) {
+        case "tr":
+            return "Karash® Şirketi - Projeler";
+        case "ar":
+            return "شركة كاراش® - المشاريع";
+        case "ku":
+            return "کۆمپانیای کاراش® - پڕۆژەکان";
+        default:
+            return "Karash® Company - Projects";
+    }
+});
 </script>
 
 <style scoped></style>

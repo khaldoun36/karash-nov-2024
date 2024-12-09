@@ -131,6 +131,8 @@ const { data: header } = await useAsyncData(
     () => queryContent(`/${currentLocale.value}/shared/header`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 

@@ -75,6 +75,8 @@ const { data: footer } = await useAsyncData(
     () => queryContent(`/${currentLocale.value}/shared/footer`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 </script>

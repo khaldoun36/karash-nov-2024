@@ -65,6 +65,8 @@ const { data: projectsSection } = await useAsyncData(
         queryContent(`/${currentLocale.value}/home/projects-section`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 </script>

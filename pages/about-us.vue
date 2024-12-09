@@ -1,4 +1,7 @@
 <template>
+    <Head>
+        <Title>{{ pageTitle }}</Title>
+    </Head>
     <main class="full-width px-2 pt-2">
         <NuxtImg
             :src="aboutUsImage"
@@ -23,6 +26,22 @@ import DesktopAchievments from "~/components/home/aboutUs/DesktopAchievments.vue
 import GuidingPrinciples from "~/components/about-us/GuidingPrinciples.vue";
 
 import aboutUsImage from "/about-us/hero-image.jpeg";
+
+const { locale } = useI18n();
+const currentLocale = computed(() => locale.value);
+
+const pageTitle = computed(() => {
+    switch (currentLocale.value) {
+        case "tr":
+            return "Karash® Şirketi - Hakkımızda";
+        case "ar":
+            return "شركة كاراش® - من نحن";
+        case "ku":
+            return "کۆمپانیای کاراش® - دەربارەی ئێمە";
+        default:
+            return "Karash® Company - About Us";
+    }
+});
 </script>
 
 <style scoped></style>

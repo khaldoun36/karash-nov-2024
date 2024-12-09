@@ -94,6 +94,8 @@ const { data: servicesSection } = await useAsyncData(
         queryContent(`/${currentLocale.value}/home/services-section`).findOne(),
     {
         watch: [currentLocale],
+        cache: true, // Enable caching of results
+        lazy: true,
     }
 );
 

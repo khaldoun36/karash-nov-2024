@@ -125,16 +125,17 @@ const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 
-// Watch for locale changes and refetch header data
-const { data: header } = await useAsyncData(
-    "header",
-    () => queryContent(`/${currentLocale.value}/shared/header`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
-    }
-);
+const enHeader = await queryContent(`/en/shared/header`).findOne();
+const arHeader = await queryContent(`/ar/shared/header`).findOne();
+const kuHeader = await queryContent(`/ku/shared/header`).findOne();
+const trHeader = await queryContent(`/tr/shared/header`).findOne();
+
+const header = computed(() => {
+    if (currentLocale.value === "en") return enHeader;
+    if (currentLocale.value === "ar") return arHeader;
+    if (currentLocale.value === "ku") return kuHeader;
+    if (currentLocale.value === "tr") return trHeader;
+});
 
 const uniqueID = useId();
 const uniqueID_2 = useId();

@@ -6,7 +6,7 @@ footer_navigation:
             link_text: "Hakkımızda"
           - page_url: "/projects"
             link_text: "Projelerimiz"
-          - page_url: "/"
+          - page_url: "/https://www.linkedin.com/company/karashco/jobs/"
             link_text: "Kariyer Fırsatları"
 
     - section_title: "Ürün ve Hizmetler"

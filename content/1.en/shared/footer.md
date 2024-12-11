@@ -6,7 +6,7 @@ footer_navigation:
             link_text: "About Us"
           - page_url: "/projects"
             link_text: "Our Projects"
-          - page_url: "/"
+          - page_url: "https://www.linkedin.com/company/karashco/jobs/"
             link_text: "Career Opportunities"
 
     - section_title: "Products and Services"

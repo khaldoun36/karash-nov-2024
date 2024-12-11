@@ -33,7 +33,7 @@ export default defineNuxtConfig({
         ],
         strategy: "prefix_except_default",
         defaultLocale: "en",
-        // baseUrl: "https://your-domain.com",
+        baseUrl: "https://karash-nov-2024.vercel.app/",
     },
     // Internationalization Options end
 

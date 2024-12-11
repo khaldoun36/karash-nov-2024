@@ -17,7 +17,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="name" class="text-base font-medium md:text-lg">
-                        Your name
+                        {{ formLabels.name }}
                         <span class="text-red-500">*</span>
                     </label>
                     <input
@@ -30,7 +30,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="phone" class="text-base font-medium md:text-lg">
-                        Phone number
+                        {{ formLabels.phone }}
                         <span class="text-red-500">*</span>
                     </label>
                     <input
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label for="email" class="text-base font-medium md:text-lg">
-                        Your email
+                        {{ formLabels.email }}
                     </label>
                     <input
                         type="email"
@@ -58,7 +58,7 @@
                         for="service"
                         class="text-base font-medium md:text-lg"
                     >
-                        Service
+                        {{ formLabels.service }}
                         <span class="text-red-500">*</span>
                     </label>
                     <div class="grid gap-8 md:grid-cols-2">
@@ -96,7 +96,7 @@
                         for="message"
                         class="text-base font-medium md:text-lg"
                     >
-                        Your message
+                        {{ formLabels.message }}
                         <span class="text-red-500">*</span>
                     </label>
                     <textarea
@@ -115,10 +115,10 @@
                 </button>
             </form>
             <NuxtImg
-                src="/contact-us/contact-us.jpg"
+                src="v1733909962/contact-us_k4yem2.jpg"
                 alt="contact us"
-                width="3152"
-                height="3128"
+                width="2466"
+                height="3762"
                 class="hidden min-h-full w-full rounded border border-white/10 shadow-sm lg:block"
             />
         </div>
@@ -131,6 +131,41 @@ import { ref } from "vue";
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
+
+// Form labels translations
+const formLabels = computed(() => {
+    const labels = {
+        en: {
+            name: "Your name",
+            phone: "Phone number",
+            email: "Your email",
+            service: "Service",
+            message: "Your message",
+        },
+        ar: {
+            name: "الاسم",
+            phone: "رقم الهاتف",
+            email: "البريد الإلكتروني",
+            service: "الخدمة",
+            message: "رسالتك",
+        },
+        ku: {
+            name: "ناوی تۆ",
+            phone: "ژمارەی تەلەفۆن",
+            email: "ئیمەیڵی تۆ",
+            service: "خزمەتگوزاری",
+            message: "پەیامەکەت",
+        },
+        tr: {
+            name: "Adınız",
+            phone: "Telefon numarası",
+            email: "E-posta adresiniz",
+            service: "Hizmet",
+            message: "Mesajınız",
+        },
+    };
+    return labels[currentLocale.value] || labels.en;
+});
 
 // Centralized content loading function
 const loadContactUs = async (path) => {

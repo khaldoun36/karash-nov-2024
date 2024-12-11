@@ -25,11 +25,11 @@
         <div class="space-y-8 lg:row-start-1">
             <NuxtImg
                 v-for="image in article?.images"
-                :src="image"
+                :src="image.src"
                 :key="image"
-                width="1280"
-                height="1706.67"
-                class="aspect-[3/4] overflow-hidden rounded border border-white/10 object-cover"
+                :width="image.width"
+                :height="image.height"
+                class="aspect-auto h-auto w-full overflow-hidden rounded border border-white/10 object-cover"
             />
         </div>
     </main>

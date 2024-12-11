@@ -1,5 +1,8 @@
 <template>
-    <section class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16">
+    <section
+        v-if="partnersSection?.title"
+        class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16"
+    >
         <div class="mt-10 grid place-items-center text-center">
             <h2 class="text-xl !text-neutral-400">
                 {{ partnersSection?.title }}
@@ -30,16 +33,23 @@
             </ul>
         </div>
     </section>
+
+    <section v-else class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16">
+        <div class="mt-10 grid place-items-center text-center">
+            <h2 class="text-xl !text-neutral-400">
+                No partners section available
+            </h2>
+        </div>
+    </section>
 </template>
 
 <script setup>
 import { onMounted, ref } from "vue";
-// public/agency-logos/DuPont_logo.png
+
 const images = import.meta.glob("~/public/agency-logos/*.png");
+const imagesPath = Object.keys(images);
 
 console.log(images);
-
-const imagesPath = Object.keys(images);
 
 function removePublicFromPaths(paths) {
     return paths.map((path) => path.replace("/public", ""));
@@ -50,24 +60,48 @@ const cleanedImagesPath = removePublicFromPaths(imagesPath);
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-// Check if current locale is RTL
-const isRTL = computed(
-    () => currentLocale.value === "ku" || currentLocale.value === "ar"
-);
+// Robust RTL locale check
+const isRTL = computed(() => {
+    const rtlLocales = ["ar", "ku", "fa", "he"];
+    return rtlLocales.includes(currentLocale.value);
+});
 
-// Fetch the partners section content for the current locale
-// This uses the `useAsyncData` composable to query the content
-// The content is fetched from the path `/${currentLocale}/home/partners-section`
-const { data: partnersSection } = await useAsyncData(
-    "partners-section",
-    () =>
-        queryContent(`/${currentLocale.value}/home/partners-section`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Centralized content loading function
+const loadPartnersSection = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(
+            `Error loading partners section for path ${path}:`,
+            error
+        );
+        return null;
     }
-);
+};
+
+// Async loading of partners sections for different locales
+const [
+    enPartnersSection,
+    arPartnersSection,
+    kuPartnersSection,
+    trPartnersSection,
+] = await Promise.all([
+    loadPartnersSection("/en/home/partners-section"),
+    loadPartnersSection("/ar/home/partners-section"),
+    loadPartnersSection("/ku/home/partners-section"),
+    loadPartnersSection("/tr/home/partners-section"),
+]);
+
+// Compute the current locale's partners section
+const partnersSection = computed(() => {
+    const localeMap = {
+        en: enPartnersSection,
+        ar: arPartnersSection,
+        ku: kuPartnersSection,
+        tr: trPartnersSection,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 
 function adjustImageWidth(event) {
     const image = event.target;

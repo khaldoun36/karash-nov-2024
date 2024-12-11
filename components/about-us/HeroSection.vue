@@ -22,14 +22,41 @@
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-// Watch for locale changes and refetch header data
-const { data: heroSection } = await useAsyncData(
-    "hero-section",
-    () => queryContent(`/${currentLocale.value}/about/hero-section`).findOne(),
-    {
-        watch: [currentLocale],
+// Robust RTL locale check
+const isRTL = computed(() => {
+    const rtlLocales = ["ar", "ku", "fa", "he"];
+    return rtlLocales.includes(currentLocale.value);
+});
+
+// Centralized content loading function
+const loadHeroSection = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(`Error loading hero section for path ${path}:`, error);
+        return null;
     }
-);
+};
+
+// Async loading of hero sections for different locales
+const [enHeroSection, arHeroSection, kuHeroSection, trHeroSection] =
+    await Promise.all([
+        loadHeroSection("/en/about/hero-section"),
+        loadHeroSection("/ar/about/hero-section"),
+        loadHeroSection("/ku/about/hero-section"),
+        loadHeroSection("/tr/about/hero-section"),
+    ]);
+
+// Compute the current locale's hero section
+const heroSection = computed(() => {
+    const localeMap = {
+        en: enHeroSection,
+        ar: arHeroSection,
+        ku: kuHeroSection,
+        tr: trHeroSection,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 </script>
 
 <style scoped></style>

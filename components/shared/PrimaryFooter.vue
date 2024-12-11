@@ -70,15 +70,42 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-const { data: footer } = await useAsyncData(
-    "footer",
-    () => queryContent(`/${currentLocale.value}/shared/footer`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
-    }
-);
+let enFooter, arFooter, kuFooter, trFooter;
+
+try {
+    enFooter = await queryContent(`/en/shared/footer`).findOne();
+} catch (error) {
+    console.error("Error loading English footer:", error);
+    enFooter = null;
+}
+
+try {
+    arFooter = await queryContent(`/ar/shared/footer`).findOne();
+} catch (error) {
+    console.error("Error loading Arabic footer:", error);
+    arFooter = null;
+}
+
+try {
+    kuFooter = await queryContent(`/ku/shared/footer`).findOne();
+} catch (error) {
+    console.error("Error loading Kurdish footer:", error);
+    kuFooter = null;
+}
+
+try {
+    trFooter = await queryContent(`/tr/shared/footer`).findOne();
+} catch (error) {
+    console.error("Error loading Turkish footer:", error);
+    trFooter = null;
+}
+
+const footer = computed(() => {
+    if (currentLocale.value === "en") return enFooter;
+    if (currentLocale.value === "ar") return arFooter;
+    if (currentLocale.value === "ku") return kuFooter;
+    if (currentLocale.value === "tr") return trFooter;
+});
 </script>
 
 <style scoped></style>

@@ -1,8 +1,13 @@
 <template>
-    <section class="breakout mt-20 md:mt-24 lg:mt-32" id="storeLocations">
+    <section
+        v-if="storeLocations?.locations?.length"
+        class="breakout mt-20 md:mt-24 lg:mt-32"
+        id="storeLocations"
+    >
         <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ storeLocations?.title }}
         </h2>
+
         <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
             <div class="embla__container">
                 <div
@@ -10,7 +15,7 @@
                     v-for="location in storeLocations?.locations"
                     :key="location.numberLink"
                 >
-                    <h3>{{ location.city }}</h3>
+                    <h3 class="text-xl font-semibold">{{ location.city }}</h3>
 
                     <NuxtLink
                         :to="location.locationLink"
@@ -19,16 +24,20 @@
                         {{ location.location }}
                     </NuxtLink>
 
-                    <NuxtLink
-                        v-for="phone in location.phones"
-                        :to="`tel:${phone.link}`"
-                        class="ansition-colors mt-6 self-start hover:text-neutral-600"
-                        style="direction: ltr !important"
-                    >
-                        {{ phone.number }}
-                    </NuxtLink>
+                    <div class="mt-6 flex flex-col space-y-2">
+                        <NuxtLink
+                            v-for="phone in location.phones"
+                            :key="phone.link"
+                            :to="`tel:${phone.link}`"
+                            class="self-start transition-colors hover:text-neutral-600"
+                            style="direction: ltr !important"
+                        >
+                            {{ phone.number }}
+                        </NuxtLink>
+                    </div>
                 </div>
             </div>
+
             <div
                 class="mt-10 hidden items-center gap-8 pr-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
             >
@@ -38,6 +47,8 @@
                     :class="{
                         'cursor-not-allowed opacity-50': !canScrollPrev,
                     }"
+                    :aria-label="isRTL ? 'Next slide' : 'Previous slide'"
+                    :aria-disabled="!canScrollPrev"
                 >
                     <Icon
                         :name="
@@ -54,6 +65,8 @@
                     :class="{
                         'cursor-not-allowed opacity-50': !canScrollNext,
                     }"
+                    :aria-label="isRTL ? 'Previous slide' : 'Next slide'"
+                    :aria-disabled="!canScrollNext"
                 >
                     <Icon
                         :name="
@@ -67,6 +80,12 @@
             </div>
         </div>
     </section>
+
+    <section v-else class="breakout mt-20 md:mt-24 lg:mt-32">
+        <h2 class="text-3xl text-neutral-400 md:text-4xl lg:text-5xl">
+            No store locations available
+        </h2>
+    </section>
 </template>
 
 <script setup>
@@ -74,24 +93,43 @@ import emblaCarouselVue from "embla-carousel-vue";
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-// Check if current locale is RTL
+// Robust RTL locale check
 const isRTL = computed(() => {
-    return ["ar", "ku"].includes(currentLocale.value);
+    const rtlLocales = ["ar", "ku", "fa", "he"];
+    return rtlLocales.includes(currentLocale.value);
 });
 
-// Watch for locale changes and refetch header data
-const { data: storeLocations } = await useAsyncData(
-    "store-locations",
-    () =>
-        queryContent(`/${currentLocale.value}/home/store-locations`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Centralized content loading function
+const loadStoreLocations = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(`Error loading store locations for path ${path}:`, error);
+        return null;
     }
-);
+};
 
-// Embla Carousel Start
+// Async loading of store locations for different locales
+const [enStoreLocations, arStoreLocations, kuStoreLocations, trStoreLocations] =
+    await Promise.all([
+        loadStoreLocations("/en/home/store-locations"),
+        loadStoreLocations("/ar/home/store-locations"),
+        loadStoreLocations("/ku/home/store-locations"),
+        loadStoreLocations("/tr/home/store-locations"),
+    ]);
+
+// Compute the current locale's store locations
+const storeLocations = computed(() => {
+    const localeMap = {
+        en: enStoreLocations,
+        ar: arStoreLocations,
+        ku: kuStoreLocations,
+        tr: trStoreLocations,
+    };
+    return localeMap[currentLocale.value] || null;
+});
+
+// Carousel state and navigation
 const canScrollPrev = ref(false);
 const canScrollNext = ref(true);
 
@@ -99,16 +137,13 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     loop: false,
     align: "start",
     direction: isRTL.value ? "rtl" : "ltr",
+    slidesToScroll: 1,
+    skipSnaps: true,
 });
 
 onMounted(() => {
     if (emblaApi.value) {
-        // Update scroll state when the carousel changes
-        emblaApi.value.on("select", () => {
-            updateScrollState();
-        });
-
-        // Initial state check
+        emblaApi.value.on("select", updateScrollState);
         updateScrollState();
     }
 });
@@ -131,7 +166,6 @@ const scrollNext = () => {
         emblaApi.value.scrollNext();
     }
 };
-// Embala Carousel end
 </script>
 
 <style scoped>

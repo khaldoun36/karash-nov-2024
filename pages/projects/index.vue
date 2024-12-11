@@ -47,7 +47,15 @@
                             class="btn mt-8 !hidden self-end lg:!flex"
                             data-variant="primary"
                         >
-                            Read More
+                            {{
+                                currentLocale === "ar"
+                                    ? "اقرأ المزيد"
+                                    : currentLocale === "tr"
+                                      ? "Daha Fazla"
+                                      : currentLocale === "ku"
+                                        ? "زیاتر بخوێنەوە"
+                                        : "Read More"
+                            }}
                         </button>
                     </div>
                 </NuxtLink>
@@ -61,16 +69,42 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-// Watch for locale changes and refetch header data
-const { data: projectsHeroSection } = await useAsyncData(
-    "hero-section",
-    () => queryContent(`/${currentLocale.value}/projects/general`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Centralized content loading function
+const loadProjectsHeroSection = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(
+            `Error loading projects hero section for path ${path}:`,
+            error
+        );
+        return null;
     }
-);
+};
+
+// Async loading of hero sections for different locales
+const [
+    enProjectsHeroSection,
+    arProjectsHeroSection,
+    kuProjectsHeroSection,
+    trProjectsHeroSection,
+] = await Promise.all([
+    loadProjectsHeroSection("/en/projects/general"),
+    loadProjectsHeroSection("/ar/projects/general"),
+    loadProjectsHeroSection("/ku/projects/general"),
+    loadProjectsHeroSection("/tr/projects/general"),
+]);
+
+// Compute the current locale's hero section
+const projectsHeroSection = computed(() => {
+    const localeMap = {
+        en: enProjectsHeroSection,
+        ar: arProjectsHeroSection,
+        ku: kuProjectsHeroSection,
+        tr: trProjectsHeroSection,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 
 const pageTitle = computed(() => {
     switch (currentLocale.value) {

@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-20 md:mt-24 lg:mt-32">
+    <section v-if="guidingPrinciples?.title" class="mt-20 md:mt-24 lg:mt-32">
         <h2 class="text-3xl md:text-4xl lg:text-5xl">
             {{ guidingPrinciples?.title }}
         </h2>
@@ -42,6 +42,12 @@
             </AccordionItem>
         </AccordionRoot>
     </section>
+
+    <section v-else class="mt-20 md:mt-24 lg:mt-32">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl">
+            No guiding principles available
+        </h2>
+    </section>
 </template>
 
 <script setup>
@@ -55,21 +61,45 @@ import {
 
 const uniqueId = useId();
 
-// Get current locale
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 
-// CMS data import
-const { data: guidingPrinciples } = await useAsyncData(
-    "guiding-principles",
-    () =>
-        queryContent(
-            `/${currentLocale.value}/about/guiding-principles`
-        ).findOne(),
-    {
-        watch: [currentLocale],
+// Centralized content loading function
+const loadGuidingPrinciples = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(
+            `Error loading guiding principles for path ${path}:`,
+            error
+        );
+        return null;
     }
-);
+};
+
+// Async loading of guiding principles for different locales
+const [
+    enGuidingPrinciples,
+    arGuidingPrinciples,
+    kuGuidingPrinciples,
+    trGuidingPrinciples,
+] = await Promise.all([
+    loadGuidingPrinciples("/en/about/guiding-principles"),
+    loadGuidingPrinciples("/ar/about/guiding-principles"),
+    loadGuidingPrinciples("/ku/about/guiding-principles"),
+    loadGuidingPrinciples("/tr/about/guiding-principles"),
+]);
+
+// Compute the current locale's guiding principles
+const guidingPrinciples = computed(() => {
+    const localeMap = {
+        en: enGuidingPrinciples,
+        ar: arGuidingPrinciples,
+        ku: kuGuidingPrinciples,
+        tr: trGuidingPrinciples,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 </script>
 
 <style scoped>

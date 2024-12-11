@@ -37,18 +37,36 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const route = useRoute();
 
-const { data: article } = await useAsyncData(
-    "services-article",
-    () =>
-        queryContent(`/${currentLocale.value}/services`)
+// Centralized content loading function
+const loadArticle = async (path) => {
+    try {
+        return await queryContent(path)
             .where({ path: route.params.slug })
-            .findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+            .findOne();
+    } catch (error) {
+        console.error(`Error loading article for path ${path}:`, error);
+        return null;
     }
-);
+};
+
+// Async loading of articles for different locales
+const [enArticle, arArticle, kuArticle, trArticle] = await Promise.all([
+    loadArticle("/en/services"),
+    loadArticle("/ar/services"),
+    loadArticle("/ku/services"),
+    loadArticle("/tr/services"),
+]);
+
+// Compute the current locale's article
+const article = computed(() => {
+    const localeMap = {
+        en: enArticle,
+        ar: arArticle,
+        ku: kuArticle,
+        tr: trArticle,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 </script>
 
 <style scoped></style>

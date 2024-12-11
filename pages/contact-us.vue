@@ -126,20 +126,40 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-// Watch for locale changes and refetch header data
-const { data: contactUs } = await useAsyncData(
-    "contact-us",
-    () => queryContent(`/${currentLocale.value}/shared/contact-us`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Centralized content loading function
+const loadContactUs = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(`Error loading contact us for path ${path}:`, error);
+        return null;
     }
-);
+};
+
+// Async loading of contact us for different locales
+const [enContactUs, arContactUs, kuContactUs, trContactUs] = await Promise.all([
+    loadContactUs("/en/shared/contact-us"),
+    loadContactUs("/ar/shared/contact-us"),
+    loadContactUs("/ku/shared/contact-us"),
+    loadContactUs("/tr/shared/contact-us"),
+]);
+
+// Compute the current locale's contact us section
+const contactUs = computed(() => {
+    const localeMap = {
+        en: enContactUs,
+        ar: arContactUs,
+        ku: kuContactUs,
+        tr: trContactUs,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 
 const pageTitle = computed(() => {
     switch (currentLocale.value) {
@@ -153,8 +173,8 @@ const pageTitle = computed(() => {
             return "Karash® Company - Contact Us";
     }
 });
+
 // form control
-import { ref } from "vue";
 const WEB3FORMS_ACCESS_KEY = "63da4544-2ce2-4fa9-9cee-b51a2927b918";
 const name = ref("");
 const email = ref("");

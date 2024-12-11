@@ -1,5 +1,5 @@
 <template>
-    <section class="mt-20 md:mt-24 lg:mt-32">
+    <section v-if="contactSection?.title" class="mt-20 md:mt-24 lg:mt-32">
         <div
             class="relative isolate flex aspect-[4/3] h-auto min-w-full flex-col items-start justify-center overflow-hidden p-8 lg:aspect-video lg:max-h-[480px]"
         >
@@ -21,6 +21,12 @@
             </NuxtLink>
         </div>
     </section>
+
+    <section v-else class="mt-20 md:mt-24 lg:mt-32">
+        <h2 class="text-3xl text-neutral-400 md:text-4xl lg:text-5xl">
+            No contact section available
+        </h2>
+    </section>
 </template>
 
 <script setup>
@@ -28,17 +34,41 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-// Watch for locale changes and refetch header data
-const { data: contactSection } = await useAsyncData(
-    "contact-section",
-    () =>
-        queryContent(`/${currentLocale.value}/home/contact-section`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Robust RTL locale check
+const isRTL = computed(() => {
+    const rtlLocales = ["ar", "ku", "fa", "he"];
+    return rtlLocales.includes(currentLocale.value);
+});
+
+// Centralized content loading function
+const loadContactSection = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(`Error loading contact section for path ${path}:`, error);
+        return null;
     }
-);
+};
+
+// Async loading of contact sections for different locales
+const [enContactSection, arContactSection, kuContactSection, trContactSection] =
+    await Promise.all([
+        loadContactSection("/en/home/contact-section"),
+        loadContactSection("/ar/home/contact-section"),
+        loadContactSection("/ku/home/contact-section"),
+        loadContactSection("/tr/home/contact-section"),
+    ]);
+
+// Compute the current locale's contact section
+const contactSection = computed(() => {
+    const localeMap = {
+        en: enContactSection,
+        ar: arContactSection,
+        ku: kuContactSection,
+        tr: trContactSection,
+    };
+    return localeMap[currentLocale.value] || null;
+});
 </script>
 
 <style scoped></style>

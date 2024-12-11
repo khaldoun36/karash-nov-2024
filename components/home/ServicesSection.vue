@@ -1,8 +1,12 @@
 <template>
-    <section class="breakout mt-20 md:mt-24 lg:mt-32">
+    <section
+        v-if="servicesSection?.services?.length"
+        class="breakout mt-20 md:mt-24 lg:mt-32"
+    >
         <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
             {{ servicesSection?.title }}
         </h2>
+
         <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
             <div class="embla__container">
                 <NuxtLink
@@ -10,9 +14,11 @@
                     v-for="service in servicesSection?.services"
                     :key="service.title"
                     :to="localePath(`/services/${service.linkPath}`)"
+                    :aria-label="`View ${service.title} service`"
                 >
                     <NuxtImg
                         :src="service?.imagePath"
+                        :alt="service?.title"
                         class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc(1024px/2)] xl:min-w-[calc(1216px/2)] 2xl:min-w-[calc(1472px/2)]"
                     />
                     <div
@@ -35,6 +41,7 @@
                     </div>
                 </NuxtLink>
             </div>
+
             <div
                 class="mt-10 hidden items-center gap-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
             >
@@ -44,6 +51,8 @@
                     :class="{
                         'cursor-not-allowed opacity-50': !canScrollPrev,
                     }"
+                    :aria-label="isRTL ? 'Next slide' : 'Previous slide'"
+                    :aria-disabled="!canScrollPrev"
                 >
                     <Icon
                         :name="
@@ -60,6 +69,8 @@
                     :class="{
                         'cursor-not-allowed opacity-50': !canScrollNext,
                     }"
+                    :aria-label="isRTL ? 'Previous slide' : 'Next slide'"
+                    :aria-disabled="!canScrollNext"
                 >
                     <Icon
                         :name="
@@ -73,6 +84,12 @@
             </div>
         </div>
     </section>
+
+    <section v-else class="breakout mt-20 md:mt-24 lg:mt-32">
+        <h2 class="text-3xl text-neutral-400 md:text-4xl lg:text-5xl">
+            No services available
+        </h2>
+    </section>
 </template>
 
 <script setup>
@@ -82,23 +99,44 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 
-// Check if current locale is RTL
+// Robust RTL locale check
 const isRTL = computed(() => {
-    return ["ar", "ku"].includes(currentLocale.value);
+    const rtlLocales = ["ar", "ku", "fa", "he"];
+    return rtlLocales.includes(currentLocale.value);
 });
 
-// Watch for locale changes and refetch header data
-const { data: servicesSection } = await useAsyncData(
-    "services-section",
-    () =>
-        queryContent(`/${currentLocale.value}/home/services-section`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
+// Centralized content loading function
+const loadServicesSection = async (path) => {
+    try {
+        return await queryContent(path).findOne();
+    } catch (error) {
+        console.error(
+            `Error loading services section for path ${path}:`,
+            error
+        );
+        return null;
     }
-);
+};
 
+// Async loading of services sections for different locales
+const [enServicesSection, arServicesSection, kuServicesSection] =
+    await Promise.all([
+        loadServicesSection("/en/home/services-section"),
+        loadServicesSection("/ar/home/services-section"),
+        loadServicesSection("/ku/home/services-section"),
+    ]);
+
+// Compute the current locale's services section
+const servicesSection = computed(() => {
+    const localeMap = {
+        en: enServicesSection,
+        ar: arServicesSection,
+        ku: kuServicesSection,
+    };
+    return localeMap[currentLocale.value] || null;
+});
+
+// Carousel state and navigation
 const canScrollPrev = ref(false);
 const canScrollNext = ref(true);
 
@@ -106,16 +144,13 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     loop: false,
     align: "start",
     direction: isRTL.value ? "rtl" : "ltr",
+    slidesToScroll: 1,
+    skipSnaps: true,
 });
 
 onMounted(() => {
     if (emblaApi.value) {
-        // Update scroll state when the carousel changes
-        emblaApi.value.on("select", () => {
-            updateScrollState();
-        });
-
-        // Initial state check
+        emblaApi.value.on("select", updateScrollState);
         updateScrollState();
     }
 });

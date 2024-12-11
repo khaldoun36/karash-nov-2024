@@ -116,17 +116,42 @@ const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
 
-// Watch for locale changes and refetch header data
-const { data: header } = await useAsyncData(
-    "header",
-    () => queryContent(`/${currentLocale.value}/shared/header`).findOne(),
-    {
-        watch: [currentLocale],
-        cache: true, // Enable caching of results
-        lazy: true,
-    }
-);
+let enHeader, arHeader, kuHeader, trHeader;
 
+try {
+    enHeader = await queryContent(`/en/shared/header`).findOne();
+} catch (error) {
+    console.error("Error loading English header:", error);
+    enHeader = null;
+}
+
+try {
+    arHeader = await queryContent(`/ar/shared/header`).findOne();
+} catch (error) {
+    console.error("Error loading Arabic header:", error);
+    arHeader = null;
+}
+
+try {
+    kuHeader = await queryContent(`/ku/shared/header`).findOne();
+} catch (error) {
+    console.error("Error loading Kurdish header:", error);
+    kuHeader = null;
+}
+
+try {
+    trHeader = await queryContent(`/tr/shared/header`).findOne();
+} catch (error) {
+    console.error("Error loading Turkish header:", error);
+    trHeader = null;
+}
+
+const header = computed(() => {
+    if (currentLocale.value === "en") return enHeader;
+    if (currentLocale.value === "ar") return arHeader;
+    if (currentLocale.value === "ku") return kuHeader;
+    if (currentLocale.value === "tr") return trHeader;
+});
 const headerRef = ref(null);
 const isScrolled = ref(false);
 const isMenuOpen = ref(false);

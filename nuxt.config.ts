@@ -39,19 +39,12 @@ export default defineNuxtConfig({
 
     // Image options start
     image: {
-        provider: "vercel",
-        format: ["avif", "webp"],
-        quality: 75,
-        screens: {
-            xs: 320,
-            sm: 640,
-            md: 768,
-            lg: 1024,
-            xl: 1280,
-            xxl: 1536,
+        provider: "cloudinary",
+        cloudinary: {
+            baseURL: "https://res.cloudinary.com/dg9ajpzkv/image/upload/",
         },
-        placeholder: true,
-        loading: "lazy",
+        format: ["avif", "webp"],
+        quality: 80,
     },
     // Image options end
 });

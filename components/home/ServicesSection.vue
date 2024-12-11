@@ -19,7 +19,10 @@
                     <NuxtImg
                         :src="service?.imagePath"
                         :alt="service?.title"
-                        class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc(1024px/2)] xl:min-w-[calc(1216px/2)] 2xl:min-w-[calc(1472px/2)]"
+                        class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 object-cover brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc(1024px/2)] xl:min-w-[calc(1216px/2)] 2xl:min-w-[calc(1472px/2)]"
+                        width="1600"
+                        height="1600"
+                        fit="fill"
                     />
                     <div
                         class="mt-6 flex items-center gap-4 text-neutral-100 transition-all group-hover:gap-5 group-hover:text-neutral-400"

@@ -99,7 +99,7 @@ const heroSection = computed(() => {
 });
 
 const image = {
-    path: "/home/hero-image.jpg",
+    path: "v1733895556/hero-image_kcu933.jpg",
     alt: "The image shows a modern and minimalist living room interior. The room features a gray L-shaped sofa with various decorative pillows, a round black and white patterned ottoman, and a low wooden coffee table. The walls are painted in a light gray color, and there is a large wall clock with a simple black outline design. The lighting in the room is provided by a suspended linear light fixture with multiple bulbs. Overall, the space has a sophisticated and monochromatic color scheme with a focus on clean lines and minimalist design elements.",
     width: 2600,
     height: 1577,

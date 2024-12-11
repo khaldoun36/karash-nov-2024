@@ -23,8 +23,10 @@
                 v-for="(image, index) in article.images"
                 :src="image"
                 :key="index"
-                width="1280"
-                height="1706.67"
+                fit="fill"
+                :modifiers="{ gravity: 'center' }"
+                width="2600"
+                height="2400"
                 class="aspect-[3/4] overflow-clip rounded border border-white/10 object-cover"
             />
         </div>

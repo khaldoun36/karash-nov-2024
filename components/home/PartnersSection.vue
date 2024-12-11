@@ -11,23 +11,25 @@
         <div
             ref="marqueeRef"
             class="marquee fadeout-horizontal"
-            :class="{ rtl: isRTL }"
-            :style="{ '--num-items': cleanedImagesPath.length }"
+            :style="{
+                '--num-items': images.length,
+                direction: 'ltr !important',
+            }"
         >
             <ul class="marquee-track mx-auto">
                 <li
                     class="marquee-item"
-                    v-for="(path, index) in cleanedImagesPath"
+                    v-for="(image, index) in images"
                     :key="index"
                     :style="{ '--item-position': index + 1 }"
                 >
                     <NuxtImg
-                        :src="path"
+                        :src="image.src"
                         :alt="`Partner ${index + 1}`"
                         class="media-images__image h-auto w-16 object-contain !brightness-150 !grayscale"
                         @load="adjustImageWidth"
-                        width="400"
-                        height="400"
+                        :width="image.width"
+                        :height="image.height"
                     />
                 </li>
             </ul>
@@ -46,16 +48,38 @@
 <script setup>
 import { onMounted, ref } from "vue";
 
-const images = import.meta.glob("~/public/agency-logos/*.png");
-const imagesPath = Object.keys(images);
-
-console.log(images);
-
-function removePublicFromPaths(paths) {
-    return paths.map((path) => path.replace("/public", ""));
-}
-
-const cleanedImagesPath = removePublicFromPaths(imagesPath);
+const images = [
+    {
+        src: "v1733903973/partners-image-5_it42gv.png",
+        width: 99,
+        height: 70,
+    },
+    {
+        src: "v1733903972/partners-image-11_ffsdlt.png",
+        width: 523,
+        height: 477,
+    },
+    {
+        src: "v1733903970/partners-image-1_ex1h5d.png",
+        width: 150,
+        height: 47,
+    },
+    {
+        src: "v1733903969/partners-image-3_v7lcaf.png",
+        width: 143,
+        height: 50,
+    },
+    {
+        src: "v1733903968/partners-image-9_2_dlugrz.png",
+        width: 159,
+        height: 44,
+    },
+    {
+        src: "v1733903967/Poliya_logo_ni3zry.png",
+        width: 306,
+        height: 80,
+    },
+];
 
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);

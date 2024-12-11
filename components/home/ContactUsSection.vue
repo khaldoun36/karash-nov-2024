@@ -4,8 +4,11 @@
             class="relative isolate flex aspect-[4/3] h-auto min-w-full flex-col items-start justify-center overflow-hidden p-8 lg:aspect-video lg:max-h-[480px]"
         >
             <NuxtImg
-                src="/home/cta.jpg"
+                src="v1733895556/cta_h2smjz.jpg"
+                :alt="contactSection?.title"
                 class="absolute inset-0 h-full w-full rounded border border-white/10 object-cover brightness-50"
+                width="2500"
+                height="1397"
             />
             <h2
                 class="relative max-w-[35ch] text-balance text-2xl md:text-4xl lg:text-5xl"

@@ -4,8 +4,11 @@
         class="full-width relative isolate mx-auto mt-20 aspect-video max-h-[800px] w-[calc(100%-1rem)] place-content-center overflow-hidden rounded md:mt-24 lg:mt-32"
     >
         <NuxtImg
-            src="/home/latest-news.png"
+            src="v1733895559/latest-news_eei5vr.png"
             class="absolute inset-0 h-full min-w-full border border-white/10 object-cover brightness-[65%]"
+            :alt="latestNews?.title"
+            width="2848"
+            height="1600"
         />
 
         <div class="wrapper">

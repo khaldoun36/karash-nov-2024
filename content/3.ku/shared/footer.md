@@ -6,7 +6,7 @@ footer_navigation:
             link_text: "دەربارەی ئێمە"
           - page_url: "/projects"
             link_text: "پڕۆژەکانمان"
-          - page_url: "/https://www.linkedin.com/company/karashco/jobs/"
+          - page_url: "https://www.linkedin.com/company/karashco/jobs/"
             link_text: "هەلی کار"
 
     - section_title: "بەرهەم و خزمەتگوزارییەکان"

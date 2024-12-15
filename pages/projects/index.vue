@@ -21,10 +21,10 @@
                     class="py-5 md:py-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-20 lg:py-8"
                 >
                     <NuxtImg
-                        :src="`${article.thumbnail.src}`"
+                        :src="article.thumbnail.src"
+                        :width="article.thumbnail.width / 2"
+                        :height="article.thumbnail.height / 2"
                         :alt="article.title"
-                        :width="`${article.thumbnail.width}`"
-                        :height="`${article.thumbnail.height}`"
                         fit="fill"
                         class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
                     />

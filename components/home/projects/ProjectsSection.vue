@@ -19,8 +19,13 @@
                         <NuxtImg
                             :src="article.thumbnail.src"
                             :alt="article.title"
-                            :width="article.thumbnail.width / 2"
-                            :height="article.thumbnail.height / 2"
+                            :width="
+                                article.thumbnail.width / (width > 1500 ? 1 : 2)
+                            "
+                            :height="
+                                article.thumbnail.height /
+                                (width > 1500 ? 1 : 2)
+                            "
                             fit="fill"
                             class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
                         />
@@ -64,6 +69,8 @@
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
+
+const { width, height } = useWindowSize();
 
 // Robust RTL locale check
 const isRTL = computed(() => {

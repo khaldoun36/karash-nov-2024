@@ -25,8 +25,8 @@
                 v-for="image in article?.images"
                 :src="image.src"
                 :key="image"
-                :width="image.width / 2"
-                :height="image.height / 2"
+                :width="image.width / (width > 1500 ? 1 : 2)"
+                :height="image.height / (width > 1500 ? 1 : 2)"
                 :alt="`project image for ${article?.title}`"
                 class="aspect-auto h-auto w-full overflow-hidden rounded border border-white/10 object-cover"
             />
@@ -39,6 +39,8 @@
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const route = useRoute();
+
+const { width, height } = useWindowSize();
 
 // Centralized content loading function
 const loadArticle = async (path) => {

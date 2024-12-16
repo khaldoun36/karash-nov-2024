@@ -19,13 +19,8 @@
                         <NuxtImg
                             :src="article.thumbnail.src"
                             :alt="article.title"
-                            :width="
-                                article.thumbnail.width / (width > 1500 ? 1 : 2)
-                            "
-                            :height="
-                                article.thumbnail.height /
-                                (width > 1500 ? 1 : 2)
-                            "
+                            :width="article.thumbnail.width"
+                            :height="article.thumbnail.height"
                             fit="fill"
                             class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
                         />
@@ -49,7 +44,15 @@
                                 class="btn mt-8 !hidden self-end lg:!flex"
                                 data-variant="primary"
                             >
-                                Read More
+                                {{
+                                    currentLocale === "ar"
+                                        ? "اقرأ المزيد"
+                                        : currentLocale === "tr"
+                                          ? "Daha Fazla"
+                                          : currentLocale === "ku"
+                                            ? "زیاتر بخوێنەوە"
+                                            : "Read More"
+                                }}
                             </button>
                         </div>
                     </NuxtLink>

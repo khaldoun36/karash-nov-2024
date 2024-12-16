@@ -79,16 +79,45 @@
                             :side-offset="10"
                         >
                             <div class="flex flex-col space-y-4">
-                                <NuxtLink :to="switchLocalePath('en')"
-                                    >EN</NuxtLink
+                                <NuxtLink
+                                    :to="switchLocalePath('en')"
+                                    @click="
+                                        reloadNuxtApp({
+                                            ttl: 100,
+                                            path: '/',
+                                        })
+                                    "
                                 >
-                                <NuxtLink :to="switchLocalePath('ar')"
+                                    EN</NuxtLink
+                                >
+                                <NuxtLink
+                                    :to="switchLocalePath('ar')"
+                                    @click="
+                                        reloadNuxtApp({
+                                            ttl: 100,
+                                            path: '/ar',
+                                        })
+                                    "
                                     >AR</NuxtLink
                                 >
-                                <NuxtLink :to="switchLocalePath('ku')"
+                                <NuxtLink
+                                    :to="switchLocalePath('ku')"
+                                    @click="
+                                        reloadNuxtApp({
+                                            ttl: 100,
+                                            path: '/ku',
+                                        })
+                                    "
                                     >KU</NuxtLink
                                 >
-                                <NuxtLink :to="switchLocalePath('tr')"
+                                <NuxtLink
+                                    :to="switchLocalePath('tr')"
+                                    @click="
+                                        reloadNuxtApp({
+                                            ttl: 100,
+                                            path: '/tr',
+                                        })
+                                    "
                                     >TR</NuxtLink
                                 >
                             </div>

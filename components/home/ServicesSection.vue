@@ -122,12 +122,17 @@ const loadServicesSection = async (path) => {
 };
 
 // Async loading of services sections for different locales
-const [enServicesSection, arServicesSection, kuServicesSection] =
-    await Promise.all([
-        loadServicesSection("/en/home/services-section"),
-        loadServicesSection("/ar/home/services-section"),
-        loadServicesSection("/ku/home/services-section"),
-    ]);
+const [
+    enServicesSection,
+    arServicesSection,
+    kuServicesSection,
+    trServicesSection,
+] = await Promise.all([
+    loadServicesSection("/en/home/services-section"),
+    loadServicesSection("/ar/home/services-section"),
+    loadServicesSection("/ku/home/services-section"),
+    loadServicesSection("/tr/home/services-section"),
+]);
 
 // Compute the current locale's services section
 const servicesSection = computed(() => {
@@ -135,6 +140,7 @@ const servicesSection = computed(() => {
         en: enServicesSection,
         ar: arServicesSection,
         ku: kuServicesSection,
+        tr: trServicesSection,
     };
     return localeMap[currentLocale.value] || null;
 });

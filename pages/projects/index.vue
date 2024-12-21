@@ -14,7 +14,7 @@
             <div
                 v-for="article in list.slice(0, -1)"
                 :key="article.path"
-                class="group"
+                class="group grid gap-8"
             >
                 <NuxtLink
                     :to="localePath(`/projects/${article.path}`)"

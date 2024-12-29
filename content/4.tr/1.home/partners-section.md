@@ -1,3 +1,3 @@
 ---
-title: "Partnerlerimiz"
+title: "İş Ortaklarımız"
 ---

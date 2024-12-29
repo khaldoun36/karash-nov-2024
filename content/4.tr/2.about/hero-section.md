@@ -1,9 +1,9 @@
 ---
 title: "Biz Kimiz"
 description:
-    - "Karash Company olarak sadece mobilya üretmiyoruz – kalıcı miraslar inşa ediyoruz. Yaklaşık yirmi yıldır, mekanları dönüştürüyor ve beklentilerin ötesine geçiyoruz. 2004'ten beri tutkumuz, köklü gelenekleri en son yeniliklerle harmanlayan olağanüstü yaşam alanları yaratmaya bizi yönlendiriyor."
+    - "Karash Company olarak mobilya üretmenin ötesinde, kalıcı miraslar inşa ediyoruz. Yaklaşık yirmi yıldır mekanları dönüştürüyor ve müşterilerimizin beklentilerinin ötesine geçiyoruz. 2004'ten bu yana tutkumuz, köklü gelenekleri modern yeniliklerle harmanlayarak olağanüstü yaşam alanları yaratmaya odaklanıyor."
 
-    - "Yolculuğumuz mükemmelliğin bir kanıtıdır. İkisi Türkiye'de ve üçü Erbil'de olmak üzere beş ileri teknoloji üretim tesisimizle sektörün gerçek öncüleri olarak kendimizi kanıtladık. Kapsamlı yeteneklerimiz mobilyanın ötesine geçerek, yapay mermer yüzeyler, elektrik ekipmanları, aksesuarlar, duvar kağıtları, korkuluklar ve özel ahşap ve demir kapıların özel üretimini içeriyor. Irak genelinde on bir şubeden oluşan geniş ağımız, bizi ev tasarımı ve üretiminde lider bir güç olarak konumlandırıyor."
+    - "Mükemmellik arayışımız başarı hikayemizin temelini oluşturuyor. İkisi Türkiye'de ve üçü Erbil'de bulunan beş ileri teknoloji üretim tesisimizle sektörün öncü kuruluşlarından biri haline geldik. Uzmanlık alanlarımız mobilyanın çok ötesine uzanıyor; yapay mermer yüzeyler, elektrik ekipmanları, aksesuarlar, duvar kağıtları, korkuluklar ile özel ahşap ve demir kapı üretimi yapıyoruz. Irak genelindeki on bir şubemizden oluşan yaygın ağımız sayesinde, ev tasarımı ve üretiminde lider konumumuzu sürdürüyoruz."
 
-    - "Biz sadece bir şirket değiliz; yaşam alanlarını olağanüstü deneyimlere dönüştürmeye kendini adamış vizyonerleriz. Kaliteye olan kararlı arayışımız ve uluslararası genişleme planlarımız, dokunduğumuz her eve eşsiz zarafet, işlevsellik ve ustalık getirme konusundaki sarsılmaz bağlılığımızı yansıtıyor."
+    - "Biz sıradan bir şirket değil, yaşam alanlarını benzersiz deneyimlere dönüştürmeye adanmış bir vizyoner topluluğuz. Kaliteye olan tutkumuz ve uluslararası büyüme hedeflerimiz, her projemize eşsiz zarafet, işlevsellik ve ustalık katma konusundaki kararlılığımızı yansıtıyor."
 ---

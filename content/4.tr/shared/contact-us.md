@@ -1,6 +1,6 @@
 ---
 formTitle: "Uzman Ekibimizle İletişime Geçin"
-formDescription: "Ürünlerimizle ilgili yardıma mı ihtiyacınız var? Proje vizyonunuzu hayata geçirmeye hazır mısınız? Nasıl yardımcı olabileceğimizi konuşalım."
+formDescription: "Ürünlerimiz hakkında desteğe mi ihtiyacınız var? Projelerinizi hayata geçirmek için profesyonel çözümler mi arıyorsunuz? Size nasıl yardımcı olabileceğimizi birlikte değerlendirelim."
 options:
     - label: "Satış Sonrası Destek"
       value: "after-sales-support"

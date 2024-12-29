@@ -7,8 +7,8 @@
             src="v1733897503/hero-image_b7nanl.jpg"
             fit="fill"
             alt="About us"
-            width="5472"
-            height="3078"
+            width="1368"
+            height="770"
             class="aspect-[4/3] h-auto max-h-[800px] w-full rounded border border-white/10 object-cover brightness-90 md:aspect-video"
         />
         <div class="wrapper">

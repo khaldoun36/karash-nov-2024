@@ -15,6 +15,7 @@
                     v-for="link in header.header_navigation.slice(0, -1)"
                     :to="localePath(link.link)"
                     class="text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                    :class="{ uppercase: locale === 'en' }"
                 >
                     {{ link.title }}
                 </NuxtLink>
@@ -22,7 +23,7 @@
                     <PopoverTrigger
                         class="flex items-center gap-1 text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
                     >
-                        <span>
+                        <span :class="{ uppercase: locale === 'en' }">
                             {{
                                 header.header_navigation[
                                     header.header_navigation.length - 1
@@ -50,6 +51,7 @@
                                     :key="link.title"
                                     :to="localePath(link.link)"
                                     class="text-balance text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                                    :class="{ uppercase: locale === 'en' }"
                                 >
                                     {{ link.title }}
                                 </NuxtLink>

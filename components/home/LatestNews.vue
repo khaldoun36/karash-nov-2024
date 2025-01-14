@@ -13,7 +13,7 @@
 
         <div class="wrapper">
             <h2
-                class="relative max-w-prose text-balance text-sm md:text-2xl lg:text-4.5xl"
+                class="relative max-w-prose text-balance text-sm md:max-w-[80ch] md:text-2xl lg:text-4.5xl"
             >
                 {{ latestNews?.title }}
             </h2>

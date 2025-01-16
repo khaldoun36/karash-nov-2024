@@ -1,6 +1,6 @@
 <template>
     <section v-if="guidingPrinciples?.title" class="mt-20 md:mt-24 lg:mt-32">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl">
             {{ guidingPrinciples?.title }}
         </h2>
         <AccordionRoot
@@ -34,7 +34,7 @@
                 >
                     <p
                         v-for="description in principle.description"
-                        class="text-base md:text-lg"
+                        class="text-base"
                     >
                         {{ description }}
                     </p>
@@ -44,7 +44,7 @@
     </section>
 
     <section v-else class="mt-20 md:mt-24 lg:mt-32">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl">
             No guiding principles available
         </h2>
     </section>

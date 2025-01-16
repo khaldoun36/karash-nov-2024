@@ -3,7 +3,9 @@
         v-if="servicesSection?.services?.length"
         class="breakout mt-20 md:mt-24 lg:mt-32"
     >
-        <h2 class="max-w-[35ch] text-balance text-3xl md:text-4xl lg:text-5xl">
+        <h2
+            class="me-4 max-w-[35ch] text-balance text-2xl md:me-6 md:text-4xl lg:text-5xl"
+        >
             {{ servicesSection?.title }}
         </h2>
 

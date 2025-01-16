@@ -1,6 +1,6 @@
 <template>
     <section v-if="projectsSection?.title" class="mt-20 md:mt-24 lg:mt-32">
-        <h2 class="max-w-[40ch] text-balance text-3xl md:text-4xl lg:text-5xl">
+        <h2 class="max-w-[40ch] text-balance text-2xl md:text-4xl lg:text-5xl">
             {{ projectsSection?.title }}
         </h2>
         <div
@@ -30,12 +30,12 @@
                         >
                             <div>
                                 <h3
-                                    class="text-balance text-2xl transition-opacity group-hover:opacity-80"
+                                    class="text-balance text-xl transition-opacity group-hover:opacity-80"
                                 >
                                     {{ article.title }}
                                 </h3>
                                 <p
-                                    class="mt-3 text-base transition-opacity group-hover:opacity-80 md:text-lg"
+                                    class="mt-3 text-base transition-opacity group-hover:opacity-80"
                                 >
                                     {{ article.seoDescription }}
                                 </p>

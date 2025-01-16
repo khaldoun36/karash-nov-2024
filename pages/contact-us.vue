@@ -8,15 +8,15 @@
         >
             <form @submit.prevent="submitForm" class="flex flex-col gap-8">
                 <div>
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl">
+                    <h1 class="text-2xl md:text-4xl lg:text-5xl">
                         {{ contactUs?.formTitle }}
                     </h1>
-                    <p class="mt-4 text-base md:text-lg">
+                    <p class="mt-4 text-base">
                         {{ contactUs?.formDescription }}
                     </p>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label for="name" class="text-base font-medium md:text-lg">
+                    <label for="name" class="text-base font-medium">
                         {{ formLabels.name }}
                         <span class="text-red-500">*</span>
                     </label>
@@ -29,7 +29,7 @@
                     />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label for="phone" class="text-base font-medium md:text-lg">
+                    <label for="phone" class="text-base font-medium">
                         {{ formLabels.phone }}
                         <span class="text-red-500">*</span>
                     </label>
@@ -42,7 +42,7 @@
                     />
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label for="email" class="text-base font-medium md:text-lg">
+                    <label for="email" class="text-base font-medium">
                         {{ formLabels.email }}
                     </label>
                     <input
@@ -54,10 +54,7 @@
                 </div>
 
                 <div class="flex flex-col gap-2">
-                    <label
-                        for="service"
-                        class="text-base font-medium md:text-lg"
-                    >
+                    <label for="service" class="text-base font-medium">
                         {{ formLabels.service }}
                         <span class="text-red-500">*</span>
                     </label>
@@ -92,10 +89,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <label
-                        for="message"
-                        class="text-base font-medium md:text-lg"
-                    >
+                    <label for="message" class="text-base font-medium">
                         {{ formLabels.message }}
                         <span class="text-red-500">*</span>
                     </label>

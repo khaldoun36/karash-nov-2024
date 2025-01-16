@@ -14,7 +14,7 @@
             >
                 {{ article?.title }}
             </h1>
-            <p class="mt-8 max-w-[45ch] text-balance text-base md:text-lg">
+            <p class="mt-8 max-w-[45ch] text-balance text-base">
                 {{ article?.description }}
             </p>
         </div>

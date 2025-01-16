@@ -15,7 +15,7 @@
             <p
                 v-for="item in article?.description"
                 :key="item"
-                class="mt-8 max-w-[45ch] text-balance text-base md:text-lg"
+                class="mt-8 max-w-[45ch] text-balance text-base"
             >
                 {{ item }}
             </p>

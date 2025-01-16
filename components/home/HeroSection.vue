@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="heroSection?.title"
-        class="full-width relative isolate mx-2 mt-2 h-[calc(100dvh-10dvh)] max-h-[800px] overflow-clip rounded border border-white/10"
+        class="full-width relative isolate mx-2 mt-2 h-[calc(100vh-10vh)] max-h-[800px] overflow-clip rounded border border-white/10 px-4"
     >
         <NuxtImg
             :src="image.path"
@@ -16,11 +16,12 @@
         >
             <h1
                 class="mx-auto max-w-[20ch] text-balance text-center text-4xl md:text-7xl lg:text-7.5xl"
+                :class="{ 'max-w-[40ch] md:!text-6xl lg:!text-6xl': isRTL }"
             >
                 {{ heroSection?.title }}
             </h1>
             <p
-                class="mx-auto mt-8 max-w-[45ch] text-balance text-center text-base md:text-lg"
+                class="mx-auto mt-8 max-w-prose text-balance text-center text-base md:text-lg"
             >
                 {{ heroSection?.subTitle }}
             </p>

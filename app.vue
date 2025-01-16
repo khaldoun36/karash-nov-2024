@@ -5,8 +5,8 @@
             <Meta name="description" :content="seo.description" />
             <Meta name="keywords" :content="seo.keywords" />
         </Head>
-        <MobileHeader v-if="width <= 1024" />
-        <PrimaryHeader v-if="width >= 1024" />
+        <MobileHeader v-if="width <= 1280" />
+        <PrimaryHeader v-if="width >= 1280" />
         <div class="wrapper">
             <NuxtPage />
         </div>

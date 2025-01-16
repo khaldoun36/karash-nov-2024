@@ -1,7 +1,7 @@
 <template>
     <div
         ref="headerRef"
-        class="full-width wrapper fixed left-0 right-0 top-0 z-50 border-b border-white/0 py-4 transition-colors duration-300 lg:!hidden"
+        class="full-width wrapper fixed left-0 right-0 top-0 z-50 border-b border-white/0 py-4 transition-colors duration-300 xl:!hidden"
         :class="{
             'border-white/10': isScrolled,
         }"

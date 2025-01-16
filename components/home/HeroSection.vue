@@ -15,8 +15,11 @@
             class="relative flex h-full flex-col items-center justify-center pt-10"
         >
             <h1
-                class="mx-auto max-w-[20ch] text-balance text-center text-4xl md:text-7xl lg:text-7.5xl"
-                :class="{ 'max-w-[40ch] md:!text-6xl lg:!text-6xl': isRTL }"
+                class="mx-auto max-w-[40ch] text-balance text-center text-4xl md:text-7xl lg:text-7.5xl"
+                :class="{
+                    'md:!text-6xl lg:!text-6xl': isRTL,
+                    '!max-w-[20ch]': locale === 'en',
+                }"
             >
                 {{ heroSection?.title }}
             </h1>

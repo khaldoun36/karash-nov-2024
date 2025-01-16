@@ -47,4 +47,9 @@ export default defineNuxtConfig({
         quality: 80,
     },
     // Image options end
+
+    //  hosting on vercel
+    nitro: {
+        static: true,
+    },
 });

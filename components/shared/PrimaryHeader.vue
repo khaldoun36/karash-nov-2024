@@ -1,4 +1,5 @@
 <template>
+    <!-- :class="{ uppercase: locale === 'en' }" -->
     <div
         ref="headerRef"
         class="full-width wrapper fixed left-0 right-0 top-0 z-50 !hidden border-b border-white/0 bg-neutral-900/0 py-4 transition-colors duration-300 lg:!grid"
@@ -10,20 +11,22 @@
             <NuxtLink :to="localePath('/')" aria-label="Home">
                 <Logo />
             </NuxtLink>
-            <nav class="flex gap-8">
+            <nav class="mt-1 flex gap-8">
                 <NuxtLink
                     v-for="link in header.header_navigation.slice(0, -1)"
                     :to="localePath(link.link)"
-                    class="text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
-                    :class="{ uppercase: locale === 'en' }"
+                    class="text-lg text-neutral-100 transition-colors hover:text-neutral-400"
+                    :class="{
+                        'tracking-wide': locale === 'en' || locale === 'tr',
+                    }"
                 >
                     {{ link.title }}
                 </NuxtLink>
-                <PopoverRoot :data-id="uniqueID">
+                <PopoverRoot :data-id="uniqueID" class="popover-root">
                     <PopoverTrigger
                         class="flex items-center gap-1 text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
                     >
-                        <span :class="{ uppercase: locale === 'en' }">
+                        <span>
                             {{
                                 header.header_navigation[
                                     header.header_navigation.length - 1
@@ -51,7 +54,6 @@
                                     :key="link.title"
                                     :to="localePath(link.link)"
                                     class="text-balance text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
-                                    :class="{ uppercase: locale === 'en' }"
                                 >
                                     {{ link.title }}
                                 </NuxtLink>
@@ -216,4 +218,21 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+nav > *,
+.popover-root > * {
+    font-family: "MinionVariableConcept", ui-serif, Georgia, Cambria,
+        "Times New Roman", Times, serif;
+    font-style: normal;
+}
+
+nav > *:lang(ar),
+nav > *:lang(ku),
+.popover-root > *:lang(ar),
+.popover-root > *:lang(ku) {
+    font-family: "Qs_Iranyekan", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    font-style: normal;
+}
+</style>

@@ -50,6 +50,9 @@
                         :key="link.link"
                         :to="localePath(link.link)"
                         class="text-2xl font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                        :class="{
+                            'tracking-wide': locale === 'en' || locale === 'tr',
+                        }"
                         @click="isMenuOpen = false"
                     >
                         {{ link.title }}
@@ -57,7 +60,13 @@
 
                     <!-- Services Dropdown -->
                     <div class="flex flex-col items-start gap-4">
-                        <span class="text-2xl font-medium text-neutral-100">
+                        <span
+                            class="text-2xl font-medium text-neutral-100"
+                            :class="{
+                                'tracking-wide':
+                                    locale === 'en' || locale === 'tr',
+                            }"
+                        >
                             {{
                                 header.header_navigation[
                                     header.header_navigation.length - 1
@@ -188,4 +197,19 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+nav > *,
+.popover-root > * {
+    font-family: "MinionVariableConcept", ui-serif, Georgia, Cambria,
+        "Times New Roman", Times, serif;
+    font-style: normal;
+}
+
+nav > *:lang(ar),
+nav > *:lang(ku) {
+    font-family: "Qs_Iranyekan", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    font-style: normal;
+}
+</style>

@@ -15,11 +15,18 @@
                     v-for="location in storeLocations?.locations"
                     :key="location.numberLink"
                 >
-                    <h3 class="text-xl font-semibold">{{ location.city }}</h3>
+                    <h3
+                        class="text-xl"
+                        :class="{
+                            'tracking-wide': locale === 'en' || locale === 'tr',
+                        }"
+                    >
+                        {{ location.city }}
+                    </h3>
 
                     <NuxtLink
                         :to="location.locationLink"
-                        class="mt-8 text-balance transition-colors hover:text-neutral-600"
+                        class="mt-8 text-balance text-sm transition-colors hover:text-neutral-600"
                     >
                         {{ location.location }}
                     </NuxtLink>
@@ -29,7 +36,7 @@
                             v-for="phone in location.phones"
                             :key="phone.link"
                             :to="`tel:${phone.link}`"
-                            class="self-start transition-colors hover:text-neutral-600"
+                            class="self-start text-sm transition-colors hover:text-neutral-600"
                             style="direction: ltr !important"
                         >
                             {{ phone.number }}

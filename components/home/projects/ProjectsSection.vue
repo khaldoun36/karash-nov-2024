@@ -31,6 +31,10 @@
                             <div>
                                 <h3
                                     class="text-balance text-xl transition-opacity group-hover:opacity-80"
+                                    :class="{
+                                        'tracking-wide':
+                                            locale === 'en' || locale === 'tr',
+                                    }"
                                 >
                                     {{ article.title }}
                                 </h3>

@@ -10,11 +10,11 @@
                 width="2500"
                 height="1397"
             />
-            <h2
-                class="relative max-w-[35ch] text-balance text-3xl md:text-5xl lg:text-6xl"
+            <h3
+                class="relative max-w-[35ch] text-balance text-base md:text-3xl lg:text-5xl"
             >
                 {{ contactSection?.title }}
-            </h2>
+            </h3>
             <NuxtLink
                 :to="localePath('/')"
                 class="btn relative mt-8"

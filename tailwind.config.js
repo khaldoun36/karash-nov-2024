@@ -7,6 +7,7 @@ export default {
         },
         extend: {
             fontSize: {
+                "6xl": ["3.5rem", "1"],
                 "4.5xl": ["2.75rem", "3.25rem"],
                 "7.5xl": ["5rem", "1"],
             },

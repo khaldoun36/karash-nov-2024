@@ -1,7 +1,7 @@
 <template>
     <div class="mt-20 md:mt-24 lg:mt-32">
         <div class="grid items-start gap-8 lg:grid-cols-2">
-            <h1 class="text-2xl md:text-4xl lg:text-5xl">
+            <h1 class="text-5xl md:text-7xl xl:text-7.5xl">
                 {{ heroSection?.title }}
             </h1>
 

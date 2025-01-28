@@ -8,7 +8,7 @@
         >
             <form @submit.prevent="submitForm" class="flex flex-col gap-8">
                 <div>
-                    <h1 class="text-2xl md:text-4xl lg:text-5xl">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl">
                         {{ contactUs?.formTitle }}
                     </h1>
                     <p class="mt-4 text-base">
@@ -111,8 +111,8 @@
             <NuxtImg
                 src="v1733909962/contact-us_k4yem2.jpg"
                 alt="contact us"
-                width="2466"
-                height="3762"
+                width="1233"
+                height="1881"
                 class="hidden min-h-full w-full rounded border border-white/10 shadow-sm lg:block"
             />
         </div>

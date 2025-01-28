@@ -3,9 +3,7 @@
         v-if="servicesSection?.services?.length"
         class="breakout mt-20 md:mt-24 lg:mt-32"
     >
-        <h2
-            class="me-4 max-w-[35ch] text-balance text-2xl md:me-6 md:text-4xl lg:text-5xl"
-        >
+        <h2 class="me-4 max-w-4xl text-3xl md:me-6 md:text-5xl xl:text-6xl">
             {{ servicesSection?.title }}
         </h2>
 
@@ -39,7 +37,7 @@
                             size="20px"
                         />
                         <h3
-                            class="text-balance text-lg transition-colors group-hover:text-neutral-400 md:text-2xl"
+                            class="text-balance text-base transition-colors group-hover:text-neutral-400 md:text-3xl"
                         >
                             {{ service?.title }}
                         </h3>

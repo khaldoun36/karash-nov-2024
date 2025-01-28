@@ -4,9 +4,9 @@
         class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16"
     >
         <div class="mt-10 grid place-items-center text-center">
-            <h2 class="text-xl !text-neutral-400">
+            <h3 class="text-xl !text-neutral-400">
                 {{ partnersSection?.title }}
-            </h2>
+            </h3>
         </div>
         <div
             ref="marqueeRef"

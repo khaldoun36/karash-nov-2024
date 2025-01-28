@@ -4,7 +4,7 @@
         class="breakout mt-20 md:mt-24 lg:mt-32"
         id="storeLocations"
     >
-        <h2 class="max-w-[35ch] text-balance text-2xl md:text-4xl lg:text-5xl">
+        <h2 class="max-w-[35ch] text-balance text-3xl md:text-5xl lg:text-6xl">
             {{ storeLocations?.title }}
         </h2>
 
@@ -16,7 +16,7 @@
                     :key="location.numberLink"
                 >
                     <h3
-                        class="text-xl"
+                        class="text-2xl"
                         :class="{
                             'tracking-wide': locale === 'en' || locale === 'tr',
                         }"

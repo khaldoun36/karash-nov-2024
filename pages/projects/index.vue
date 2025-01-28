@@ -4,7 +4,7 @@
     </Head>
     <main class="mt-40 md:mt-44 lg:mt-52">
         <h1
-            class="mx-auto max-w-[20ch] text-balance text-center text-4xl md:text-7xl lg:text-7.5xl"
+            class="mx-auto max-w-[20ch] text-balance text-center text-5xl md:text-7xl xl:text-7.5xl"
         >
             {{ projectsHeroSection?.title }}
         </h1>
@@ -34,7 +34,7 @@
                     >
                         <div>
                             <h3
-                                class="text-balance text-2xl transition-opacity group-hover:opacity-80"
+                                class="text-balance text-xl transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
                             >
                                 {{ article.title }}
                             </h3>

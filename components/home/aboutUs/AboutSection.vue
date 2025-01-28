@@ -1,7 +1,7 @@
 <template>
     <section v-if="aboutSection?.title" class="mt-20 md:mt-24 lg:mt-32">
         <div class="xl:items-top xl:flex xl:gap-32">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl xl:-mt-1">
+            <h2 class="text-nowrap text-3xl md:text-5xl xl:-mt-1 xl:text-6xl">
                 {{ aboutSection?.title }}
             </h2>
             <div class="mt-8 xl:mt-0 xl:flex xl:gap-8">

@@ -11,7 +11,7 @@
                 height="1397"
             />
             <h2
-                class="relative max-w-[35ch] text-balance text-2xl md:text-4xl lg:text-5xl"
+                class="relative max-w-[35ch] text-balance text-3xl md:text-5xl lg:text-6xl"
             >
                 {{ contactSection?.title }}
             </h2>

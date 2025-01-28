@@ -1,6 +1,6 @@
 <template>
     <section v-if="guidingPrinciples?.title" class="mt-20 md:mt-24 lg:mt-32">
-        <h2 class="text-2xl md:text-4xl lg:text-5xl">
+        <h2 class="text-3xl md:text-5xl xl:text-6xl">
             {{ guidingPrinciples?.title }}
         </h2>
         <AccordionRoot
@@ -20,7 +20,9 @@
                     <AccordionTrigger
                         class="AccordionTrigger flex min-w-full items-center justify-between"
                     >
-                        <h3 class="text-2xl md:text-3xl">
+                        <h3
+                            class="text-xl text-neutral-400 md:text-3xl xl:text-5xl"
+                        >
                             {{ principle.title }}
                         </h3>
                         <button class="morph-icon">
@@ -34,7 +36,7 @@
                 >
                     <p
                         v-for="description in principle.description"
-                        class="text-base"
+                        class="text-base text-neutral-100"
                     >
                         {{ description }}
                     </p>
@@ -137,7 +139,7 @@ const guidingPrinciples = computed(() => {
 }
 
 .morph-icon {
-    color: theme("colors.neutral.50");
+    color: theme("colors.neutral.300");
     width: 32px;
     height: 32px;
     border: 0;
@@ -148,7 +150,7 @@ const guidingPrinciples = computed(() => {
 .morph-icon span {
     position: absolute;
     transition: 300ms;
-    background: theme("colors.neutral.50");
+    background: theme("colors.neutral.300");
     border-radius: 2px;
 }
 

@@ -9,22 +9,16 @@
             :width="image.width"
             :height="image.height"
             class="absolute inset-0 h-full w-full object-cover brightness-[40%]"
-            preload
         />
         <main
             class="relative flex h-full flex-col items-center justify-center pt-10"
         >
             <h1
-                class="mx-auto text-balance text-center text-3xl md:text-7xl lg:text-7.5xl"
-                :class="{
-                    'md:!text-6xl lg:!text-6xl': isRTL,
-                }"
+                class="mx-auto max-w-6xl text-center text-5xl md:text-7xl xl:text-7.5xl"
             >
                 {{ heroSection?.title }}
             </h1>
-            <p
-                class="mx-auto mt-8 max-w-prose text-pretty text-center text-base"
-            >
+            <p class="mx-auto mt-8 max-w-2xl text-pretty text-center text-base">
                 {{ heroSection?.subTitle }}
             </p>
             <div class="mx-auto mt-10 flex gap-8">

@@ -9,7 +9,9 @@
         class="relative mt-40 grid gap-10 md:mt-44 md:gap-12 lg:mt-52 lg:grid-cols-[1.5fr_1fr] lg:gap-16"
     >
         <div class="self-start lg:sticky lg:top-20 lg:col-start-2">
-            <h1 class="max-w-[40ch] text-balance text-4xl md:text-6xl">
+            <h1
+                class="max-w-[40ch] text-balance text-5xl md:text-7xl xl:text-7.5xl"
+            >
                 {{ article?.title }}
             </h1>
             <p

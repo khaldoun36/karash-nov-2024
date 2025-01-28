@@ -3,10 +3,10 @@
         class="achievements relative mt-10 grid grid-cols-2 grid-rows-2 md:mt-12 lg:mt-16 lg:hidden"
     >
         <div class="py-8 text-center" v-for="item in aboutSection?.statistics">
-            <p class="text-4xl text-neutral-100">
+            <p class="text-3xl text-neutral-100 md:text-5xl xl:text-6xl">
                 {{ item?.number }}
             </p>
-            <h3 class="mt-3 text-sm text-neutral-300 md:text-base">
+            <h3 class="mt-3 text-base text-neutral-300 md:text-base">
                 {{ item?.title }}
             </h3>
         </div>

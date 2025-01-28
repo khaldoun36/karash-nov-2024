@@ -10,7 +10,7 @@
     >
         <div class="self-start lg:sticky lg:top-20 lg:col-start-2">
             <h1
-                class="max-w-[40ch] text-balance text-4xl md:text-7xl lg:text-7.5xl"
+                class="max-w-[40ch] text-balance text-5xl md:text-7xl lg:text-7.5xl"
             >
                 {{ article?.title }}
             </h1>

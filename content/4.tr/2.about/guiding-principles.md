@@ -20,6 +20,6 @@ principles:
     - title: "Kalite"
       value: "item-4"
       description:
-          - "İş anlayışımızın temelinde kalite ve estetik hassasiyeti yer alır. Müşterilerimizin farklı ihtiyaçlarını karşılamak için sürekli geliştirdiğimiz özel süreçlerle, tüm projelerimizde kalite ve hassasiyeti en üst düzeyde tutuyoruz. 2004'ten bu yana sektörün güvenilir bir ismi olarak, mutfak ve dekorasyon dahil tüm ev mobilyası projelerinin tasarım, üretim ve uygulamasında kapsamlı deneyime sahibiz."
+          - "İş anlayışımızın temelinde kalite ve estetik hassasiyeti yer alır. Müşterilerimizin farklı ihtiyaçlarını Karashılamak için sürekli geliştirdiğimiz özel süreçlerle, tüm projelerimizde kalite ve hassasiyeti en üst düzeyde tutuyoruz. 2004'ten bu yana sektörün güvenilir bir ismi olarak, mutfak ve dekorasyon dahil tüm ev mobilyası projelerinin tasarım, üretim ve uygulamasında kapsamlı deneyime sahibiz."
           - "Mükemmellik arayışımız, sürekli denetim, sıkı kalite kontrolü ve düzenli ilerleme takibini içeren titiz kalite politikamızda kendini gösterir. Detaylara verdiğimiz önem ve üstün işçilik anlayışımızla, sunduğumuz her hizmette müşteri memnuniyetini sağlamayı ve beklentilerin ötesine geçmeyi taahhüt ediyoruz."
 ---

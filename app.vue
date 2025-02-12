@@ -16,6 +16,13 @@
 </template>
 
 <script setup>
+/*
+<link
+                rel="preload"
+                as="image"
+                href="https://res.cloudinary.com/dg9ajpzkv/image/upload/v1733895556/hero-image_kcu933.jpg"
+            />
+*/
 import PrimaryHeader from "./components/shared/PrimaryHeader.vue";
 import MobileHeader from "./components/shared/MobileHeader.vue";
 import PrimaryFooter from "./components/shared/PrimaryFooter.vue";

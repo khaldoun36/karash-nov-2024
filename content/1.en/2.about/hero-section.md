@@ -1,5 +1,5 @@
 ---
-title: "Who we are"
+title: "Who We Are"
 description:
     - "At Karash Company, we're not just building furniture – we're crafting legacies. For nearly two decades, we've been transforming spaces and exceeding expectations. Since 2004, our passion has driven us to create extraordinary home environments that blend time-honored traditions with cutting-edge innovation."
 

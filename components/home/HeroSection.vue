@@ -4,6 +4,7 @@
         class="full-width relative isolate mx-2 mt-2 h-[calc(100vh-10vh)] max-h-[800px] overflow-clip rounded border border-white/10 px-4"
     >
         <NuxtImg
+            preload
             :src="image.path"
             :alt="image.alt"
             :width="image.width"

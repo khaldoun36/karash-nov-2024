@@ -11,7 +11,7 @@
         <div class="embla mt-10 md:mt-12 lg:mt-16" ref="emblaRef">
             <div class="embla__container">
                 <div
-                    class="embla__slide group me-6 flex aspect-square h-auto min-w-72 flex-col justify-end rounded border border-white/10 bg-neutral-900 p-8 md:me-8"
+                    class="embla__slide group me-6 flex aspect-square h-auto min-w-72 flex-col justify-start rounded border border-white/10 bg-neutral-900 p-8 md:me-8"
                     v-for="location in storeLocations?.locations"
                     :key="location.numberLink"
                 >

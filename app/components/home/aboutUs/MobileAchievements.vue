@@ -1,0 +1,50 @@
+<template>
+    <div
+        class="achievements relative mt-10 grid grid-cols-2 grid-rows-2 md:mt-12 lg:mt-16 lg:hidden"
+    >
+        <div class="py-8 text-center" v-for="item in aboutSection?.statistics">
+            <p class="text-3xl text-neutral-100 md:text-5xl xl:text-6xl">
+                {{ item?.number }}
+            </p>
+            <h3 class="mt-3 text-base text-neutral-300 md:text-base">
+                {{ item?.title }}
+            </h3>
+        </div>
+        <div class="h-line" aria-hidden="true" aria-label="decorative"></div>
+        <div class="v-line" aria-hidden="true" aria-label="decorative"></div>
+        <Icon
+            name="ph:diamond-fill"
+            aria-hidden="true"
+            aria-label="decorative"
+            size="30px"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-neutral-600"
+        />
+    </div>
+</template>
+
+<script setup>
+const { data: aboutSection } = await useLocalizedContent(
+    "mobile-achievements",
+    "home/about-section"
+);
+</script>
+
+<style scoped>
+.h-line,
+.v-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Adjust for the element's own size */
+    background-color: theme("colors.neutral.600");
+}
+
+.h-line {
+    min-width: 100%;
+    height: 1px;
+}
+.v-line {
+    min-height: 100%;
+    width: 1px;
+}
+</style>

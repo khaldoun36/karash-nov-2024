@@ -5,7 +5,6 @@ export default defineNuxtConfig({
         "@nuxt/content",
         "@nuxtjs/tailwindcss",
         "@nuxtjs/i18n",
-        "@nuxt/fonts",
         "@nuxt/image",
         "@nuxt/icon",
         "@vueuse/nuxt",
@@ -13,6 +12,17 @@ export default defineNuxtConfig({
 
     routeRules: {
         "/": { prerender: true },
+    },
+
+    vite: {
+        optimizeDeps: {
+            include: [
+                "@vue/devtools-core",
+                "@vue/devtools-kit",
+                "radix-vue",
+                "embla-carousel-vue",
+            ],
+        },
     },
 
     compatibilityDate: "2024-11-17",
@@ -47,6 +57,12 @@ export default defineNuxtConfig({
         quality: 80,
     },
     // Image options end
+
+    content: {
+        experimental: {
+            nativeSqlite: true,
+        },
+    },
 
     //  hosting on vercel
     nitro: {

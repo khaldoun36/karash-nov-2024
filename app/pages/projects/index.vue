@@ -37,11 +37,6 @@
                         >
                             {{ article.title }}
                         </h3>
-                        <p
-                            class="mt-3 text-base transition-opacity group-hover:opacity-80"
-                        >
-                            {{ article.seoDescription }}
-                        </p>
                     </div>
                     <button
                         class="btn mt-8 !hidden self-end lg:!flex"

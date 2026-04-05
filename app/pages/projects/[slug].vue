@@ -14,13 +14,6 @@
             >
                 {{ article?.title }}
             </h1>
-            <p
-                v-for="item in article?.description"
-                :key="item"
-                class="mt-8 max-w-[45ch] text-balance text-base"
-            >
-                {{ item }}
-            </p>
         </div>
         <div class="space-y-8 lg:row-start-1">
             <!-- Use template v-for for better performance -->

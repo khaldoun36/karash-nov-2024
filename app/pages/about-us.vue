@@ -9,7 +9,7 @@
             alt="About us"
             width="1368"
             height="770"
-            class="aspect-[4/3] h-auto max-h-[800px] w-full rounded border border-white/10 object-cover brightness-90 md:aspect-video"
+            class="aspect-4/3 h-auto max-h-200 w-full rounded border border-white/10 object-cover brightness-90 md:aspect-video"
         />
         <div class="wrapper">
             <HeroSection />

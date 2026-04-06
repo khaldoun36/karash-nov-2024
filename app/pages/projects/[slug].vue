@@ -10,7 +10,7 @@
     >
         <div class="self-start lg:sticky lg:top-20 lg:col-start-2">
             <h1
-                class="max-w-[40ch] text-balance text-5xl md:text-7xl xl:text-7.5xl"
+                class="xl:text-7.5xl max-w-[40ch] text-5xl text-balance md:text-7xl"
             >
                 {{ article?.title }}
             </h1>
@@ -24,7 +24,6 @@
                         aspectRatio: `${image.width} / ${image.height}`,
                     }"
                 >
-                    <!-- Add loading skeleton -->
                     <div
                         v-show="!imageLoaded[image.src]"
                         class="absolute inset-0 animate-pulse bg-gray-700"
@@ -32,10 +31,10 @@
 
                     <NuxtImg
                         :src="image.src"
-                        :width="image.width / (image.width > 1500 ? 2 : 1)"
-                        :height="image.height / (image.width > 1500 ? 2 : 1)"
+                        :width="image.width"
+                        :height="image.height"
                         :alt="`project image for ${article?.title}`"
-                        class="h-auto w-full object-cover transition-opacity duration-300"
+                        class="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
                         :class="{ 'opacity-0': !imageLoaded[image.src] }"
                         @load="imageLoaded[image.src] = true"
                         loading="lazy"
@@ -46,7 +45,7 @@
     </main>
     <div v-else class="flex h-96 items-center justify-center">
         <div
-            class="border-4 border-primary h-12 w-12 animate-spin rounded-full border-t-transparent"
+            class="border-primary h-12 w-12 animate-spin rounded-full border-4 border-t-transparent"
         ></div>
     </div>
 </template>

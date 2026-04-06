@@ -51,14 +51,14 @@ export default defineNuxtConfig({
     // Internationalization Options end
 
     // Image options start
-    image: {
-        provider: "cloudinary",
-        cloudinary: {
-            baseURL: "https://res.cloudinary.com/dg9ajpzkv/image/upload/",
-        },
-        format: ["avif", "webp"],
-        quality: 80,
-    },
+    // image: {
+    //     provider: "cloudinary",
+    //     cloudinary: {
+    //         baseURL: "https://res.cloudinary.com/dg9ajpzkv/image/upload/",
+    //     },
+    //     format: ["avif", "webp"],
+    //     quality: 80,
+    // },
     // Image options end
 
     content: {
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     },
 
     //  hosting on vercel
-    nitro: {
-        static: true,
-    },
+    // nitro: {
+    //     static: true,
+    // },
 });

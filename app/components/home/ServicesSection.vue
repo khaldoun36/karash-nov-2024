@@ -19,7 +19,7 @@
                     <NuxtImg
                         :src="service?.imagePath"
                         :alt="service?.title"
-                        class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 object-cover brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-[calc(1024px/2)] xl:min-w-[calc(1216px/2)] 2xl:min-w-[calc(1472px/2)]"
+                        class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 object-cover brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-lg xl:min-w-152 2xl:min-w-184"
                         width="1600"
                         height="1600"
                         fit="fill"
@@ -37,7 +37,7 @@
                             size="20px"
                         />
                         <h3
-                            class="text-balance text-base transition-colors group-hover:text-neutral-400 md:text-3xl"
+                            class="text-base text-balance transition-colors group-hover:text-neutral-400 md:text-3xl"
                         >
                             {{ service?.title }}
                         </h3>
@@ -46,7 +46,7 @@
             </div>
 
             <div
-                class="mt-10 hidden items-center gap-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
+                class="mt-10 hidden items-center gap-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-5xl xl:max-w-7xl 2xl:max-w-screen-2xl"
             >
                 <button
                     class="embla__prev flex size-12 items-center justify-center rounded-full bg-neutral-900"

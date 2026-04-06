@@ -16,7 +16,7 @@
             <div class="mt-5 flex min-h-full flex-col justify-between lg:mt-0">
                 <div>
                     <h3
-                        class="text-xl text-balance transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
+                        class="text-xl transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
                         :class="{
                             'tracking-wide': locale === 'en' || locale === 'tr',
                         }"

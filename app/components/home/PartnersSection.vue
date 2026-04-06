@@ -4,7 +4,7 @@
         class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16"
     >
         <div class="mt-10 grid place-items-center text-center">
-            <h3 class="text-xl !text-neutral-400">
+            <h3 class="text-xl text-neutral-400!">
                 {{ partnersSection.title }}
             </h3>
         </div>
@@ -25,7 +25,7 @@
                     <NuxtImg
                         :src="image.src"
                         :alt="`Partner ${index + 1}`"
-                        class="media-images__image h-auto w-[120px] object-contain !brightness-150 !grayscale lg:w-[160px]"
+                        class="media-images__image h-auto w-30 object-contain brightness-150! grayscale! lg:w-40"
                         :width="image.width"
                         :height="image.height"
                     />
@@ -36,7 +36,7 @@
 
     <section v-else class="mt-10 space-y-8 overflow-hidden md:mt-12 lg:mt-16">
         <div class="mt-10 grid place-items-center text-center">
-            <h2 class="text-xl !text-neutral-400">
+            <h2 class="text-xl text-neutral-400!">
                 No partners section available
             </h2>
         </div>
@@ -84,7 +84,7 @@ const { data: partnersSection } = await useLocalizedContent(
 
     margin-inline: auto;
 
-    --mask-color: theme("colors.zinc.100");
+    --mask-color: var(--color-zinc-100);
     mask: linear-gradient(
         90deg,
         transparent,

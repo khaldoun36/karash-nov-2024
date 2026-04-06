@@ -36,7 +36,7 @@ const { data: aboutSection } = await useLocalizedContent(
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); /* Adjust for the element's own size */
-    background-color: theme("colors.neutral.600");
+    background-color: var(--color-neutral-600);
 }
 
 .h-line {

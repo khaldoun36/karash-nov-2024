@@ -104,7 +104,7 @@ const { data: guidingPrinciples } = await useLocalizedContent(
 }
 
 .morph-icon {
-    color: theme("colors.neutral.300");
+    color: var(--color-neutral-300);
     width: 32px;
     height: 32px;
     border: 0;
@@ -115,7 +115,7 @@ const { data: guidingPrinciples } = await useLocalizedContent(
 .morph-icon span {
     position: absolute;
     transition: 300ms;
-    background: theme("colors.neutral.300");
+    background: var(--color-neutral-300);
     border-radius: 2px;
 }
 

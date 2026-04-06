@@ -1,9 +1,10 @@
+import tailwindcss from "@tailwindcss/vite";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
         "@nuxt/content",
-        "@nuxtjs/tailwindcss",
         "@nuxtjs/i18n",
         "@nuxt/image",
         "@nuxt/icon",
@@ -15,6 +16,7 @@ export default defineNuxtConfig({
     },
 
     vite: {
+        plugins: [tailwindcss()],
         optimizeDeps: {
             include: [
                 "@vue/devtools-core",
@@ -28,6 +30,7 @@ export default defineNuxtConfig({
     compatibilityDate: "2024-11-17",
 
     css: [
+        "@/assets/css/main.css",
         "@/assets/css/typography.css",
         "@/assets/css/wrapper.css",
         "@/assets/css/button.css",

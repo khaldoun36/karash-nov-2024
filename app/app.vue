@@ -42,6 +42,6 @@ const { data: seo } = await useLocalizedContent("site-seo", "home/seo");
 html,
 body,
 #app {
-    background-color: theme("colors.neutral.950");
+    background-color: var(--color-neutral-950);
 }
 </style>

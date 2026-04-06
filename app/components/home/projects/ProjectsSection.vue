@@ -1,6 +1,6 @@
 <template>
     <section v-if="projectsSection?.title" class="mt-20 md:mt-24 lg:mt-32">
-        <h2 class="max-w-[40ch] text-balance text-3xl md:text-5xl lg:text-6xl">
+        <h2 class="max-w-[40ch] text-3xl text-balance md:text-5xl lg:text-6xl">
             {{ projectsSection?.title }}
         </h2>
         <div
@@ -21,7 +21,7 @@
                         :width="article.thumbnail.width"
                         :height="article.thumbnail.height"
                         fit="fill"
-                        class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
+                        class="aspect-4/3 h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
                     />
 
                     <div
@@ -29,7 +29,7 @@
                     >
                         <div>
                             <h3
-                                class="text-balance text-xl transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
+                                class="text-xl text-balance transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
                                 :class="{
                                     'tracking-wide':
                                         locale === 'en' || locale === 'tr',
@@ -39,7 +39,7 @@
                             </h3>
                         </div>
                         <button
-                            class="btn mt-8 !hidden self-end lg:!flex"
+                            class="btn mt-8 hidden! self-end lg:flex!"
                             data-variant="primary"
                         >
                             {{

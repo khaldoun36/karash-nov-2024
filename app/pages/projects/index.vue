@@ -4,7 +4,7 @@
     </Head>
     <main class="mt-40 md:mt-44 lg:mt-52">
         <h1
-            class="mx-auto max-w-[20ch] text-balance text-center text-5xl md:text-7xl xl:text-7.5xl"
+            class="xl:text-7.5xl mx-auto max-w-[20ch] text-center text-5xl text-balance md:text-7xl"
         >
             {{ projectsHeroSection?.title }}
         </h1>
@@ -25,7 +25,7 @@
                     :height="article.thumbnail.height"
                     :alt="article.title"
                     fit="fill"
-                    class="aspect-[4/3] h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
+                    class="aspect-4/3 h-auto overflow-clip rounded border border-white/10 object-cover transition-opacity group-hover:opacity-80"
                 />
 
                 <div
@@ -33,13 +33,13 @@
                 >
                     <div>
                         <h3
-                            class="text-balance text-xl transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
+                            class="text-xl text-balance transition-opacity group-hover:opacity-80 md:text-3xl xl:text-4xl"
                         >
                             {{ article.title }}
                         </h3>
                     </div>
                     <button
-                        class="btn mt-8 !hidden self-end lg:!flex"
+                        class="btn mt-8 hidden! self-end lg:flex!"
                         data-variant="primary"
                     >
                         {{

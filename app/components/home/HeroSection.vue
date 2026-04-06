@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="heroSection?.title"
-        class="full-width relative isolate mx-2 mt-2 h-[calc(100vh-10vh)] max-h-[800px] overflow-clip rounded border border-white/10 px-4"
+        class="full-width relative isolate mx-2 mt-2 h-[calc(100vh-10vh)] max-h-200 overflow-clip rounded border border-white/10 px-4"
     >
         <NuxtImg
             preload
@@ -9,17 +9,17 @@
             :alt="image.alt"
             :width="image.width"
             :height="image.height"
-            class="absolute inset-0 h-full w-full object-cover brightness-[40%]"
+            class="absolute inset-0 h-full w-full object-cover brightness-40"
         />
         <main
             class="relative flex h-full flex-col items-center justify-center pt-10"
         >
             <h1
-                class="mx-auto max-w-6xl text-center text-5xl md:text-7xl xl:text-7.5xl"
+                class="xl:text-7.5xl mx-auto max-w-6xl text-center text-5xl md:text-7xl"
             >
                 {{ heroSection?.title }}
             </h1>
-            <p class="mx-auto mt-8 max-w-2xl text-pretty text-center text-base">
+            <p class="mx-auto mt-8 max-w-2xl text-center text-base text-pretty">
                 {{ heroSection?.subTitle }}
             </p>
             <div class="mx-auto mt-10 flex gap-8">
@@ -43,7 +43,7 @@
 
     <div
         v-else
-        class="full-width relative isolate mx-2 mt-2 h-[calc(100dvh-10dvh)] max-h-[800px] overflow-clip rounded border border-white/10"
+        class="full-width relative isolate mx-2 mt-2 h-[calc(100dvh-10dvh)] max-h-200 overflow-clip rounded border border-white/10"
     >
         <main
             class="relative flex h-full flex-col items-center justify-center pt-10"

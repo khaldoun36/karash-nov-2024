@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* @config "@@/tailwind.config.js"; */
+
+@import "tailwindcss";
+
+@theme {
+    /* Border Width */
+    --default-border-width: 1.5px;
+
+    /* Font Sizes & Line Heights */
+    --text-6xl: 3.5rem;
+    --text-6xl--line-height: 1;
+
+    --text-4\.5xl: 2.75rem;
+    --text-4\.5xl--line-height: 3.25rem;
+
+    --text-7\.5xl: 5rem;
+    --text-7\.5xl--line-height: 1;
+
+    /* Colors */
+    --color-primary-50: #f9f4ed;
+    --color-primary-100: #f1e4d0;
+    --color-primary-200: #e4c9a4;
+    --color-primary-300: #d4a670;
+    --color-primary-400: #c68749;
+    --color-primary-500: #b06f39;
+    --color-primary-600: #9d5931;
+    --color-primary-700: #7e432a;
+    --color-primary-800: #6a3729;
+    --color-primary-900: #5b3128;
+    --color-primary-950: #341814;
+}

@@ -13,7 +13,8 @@
             </NuxtLink>
             <nav class="mt-1 flex gap-8">
                 <NuxtLink
-                    v-for="link in header.header_navigation.slice(0, -1)"
+                    v-for="link in primaryNavigationLinks"
+                    :key="link.link ?? link.title"
                     :to="localePath(link.link)"
                     class="text-lg text-neutral-100 transition-colors hover:text-neutral-400"
                     :class="{
@@ -24,14 +25,11 @@
                 </NuxtLink>
                 <PopoverRoot :data-id="uniqueID" class="popover-root">
                     <PopoverTrigger
+                        v-if="servicesNavigationGroup"
                         class="flex items-center gap-1 text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
                     >
                         <span>
-                            {{
-                                header.header_navigation[
-                                    header.header_navigation.length - 1
-                                ].title
-                            }}
+                            {{ servicesNavigationGroup.title }}
                         </span>
                         <Icon
                             name="heroicons:chevron-down-20-solid"
@@ -48,9 +46,7 @@
                         >
                             <div class="flex flex-col space-y-4">
                                 <NuxtLink
-                                    v-for="link in header.header_navigation[
-                                        header.header_navigation.length - 1
-                                    ].sub_items"
+                                    v-for="link in serviceSubItems"
                                     :key="link.title"
                                     :to="localePath(link.link)"
                                     class="text-balance text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
@@ -130,11 +126,12 @@
                     </PopoverPortal>
                 </PopoverRoot>
                 <NuxtLink
-                    :to="localePath(header.cta.link)"
+                    v-if="headerCta?.link"
+                    :to="localePath(headerCta.link)"
                     class="btn"
                     data-variant="primary"
                 >
-                    {{ header.cta.title }}
+                    {{ headerCta.title }}
                 </NuxtLink>
             </div>
         </header>
@@ -161,6 +158,15 @@ const { data: header } = await useLocalizedContent(
     "primary-header",
     "shared/header"
 );
+const headerNavigation = computed(() => header.value?.header_navigation ?? []);
+const primaryNavigationLinks = computed(() => headerNavigation.value.slice(0, -1));
+const servicesNavigationGroup = computed(
+    () => headerNavigation.value.at(-1) ?? null
+);
+const serviceSubItems = computed(
+    () => servicesNavigationGroup.value?.sub_items ?? []
+);
+const headerCta = computed(() => header.value?.cta ?? null);
 
 const uniqueID = useId();
 const uniqueID_2 = useId();

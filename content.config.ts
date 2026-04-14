@@ -27,6 +27,7 @@ export default defineContentConfig({
                     keywords: z.string().optional(),
                     rights: z.string().optional(),
                     slug: z.string().optional(),
+                    category: z.string().optional(),
                     seoDescription: z.string().optional(),
                     statistics: z
                         .array(

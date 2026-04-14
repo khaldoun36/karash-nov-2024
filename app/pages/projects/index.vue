@@ -11,6 +11,12 @@
     </main>
     <section class="mt-20 divide-y divide-white/10 md:mt-24 lg:mt-32">
         <div
+            v-if="activeCategory"
+            class="mb-8 text-sm tracking-[0.18em] text-neutral-400"
+        >
+            {{ activeCategoryLabel }}
+        </div>
+        <div
             v-for="article in projectArticles"
             :key="article.slug"
             class="group grid gap-8"
@@ -59,9 +65,16 @@
 </template>
 
 <script setup>
+import {
+    PROJECT_CATEGORY_BY_SLUG,
+    getProjectCategoryDefinition,
+    getProjectCategoryLabel,
+} from "~/constants/projectCategories";
+
 const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
+const route = useRoute();
 
 const { data: projectsHeroSection } = await useLocalizedContent(
     "projects-hero",
@@ -72,25 +85,59 @@ const { data: projectEntries } = await useLocalizedCollectionItems(
     "projects"
 );
 
+const activeCategory = computed(() => {
+    const category = route.query.category;
+
+    if (typeof category !== "string") {
+        return null;
+    }
+
+    return getProjectCategoryDefinition(category);
+});
+
+const activeCategoryLabel = computed(() => {
+    if (!activeCategory.value) {
+        return "";
+    }
+
+    return getProjectCategoryLabel(
+        activeCategory.value.id,
+        currentLocale.value
+    );
+});
+
 const projectArticles = computed(() =>
     sortContentItemsByStem(
         (projectEntries.value ?? []).filter(
-            (article) => article.slug && article.thumbnail
+            (article) =>
+                article.slug &&
+                article.thumbnail &&
+                (!activeCategory.value ||
+                    PROJECT_CATEGORY_BY_SLUG[article.slug] ===
+                        activeCategory.value.id)
         )
     )
 );
 
 const pageTitle = computed(() => {
-    switch (currentLocale.value) {
-        case "tr":
-            return "Karash® Şirketi - Projeler";
-        case "ar":
-            return "شركة كاراش® - المشاريع";
-        case "ku":
-            return "کۆمپانیای کاراش® - پڕۆژەکان";
-        default:
-            return "Karash® Company - Projects";
+    const baseTitle = (() => {
+        switch (currentLocale.value) {
+            case "tr":
+                return "Karash® Şirketi - Projeler";
+            case "ar":
+                return "شركة كاراش® - المشاريع";
+            case "ku":
+                return "کۆمپانیای کاراش® - پڕۆژەکان";
+            default:
+                return "Karash® Company - Projects";
+        }
+    })();
+
+    if (activeCategoryLabel.value) {
+        return `${baseTitle} - ${activeCategoryLabel.value}`;
     }
+
+    return baseTitle;
 });
 </script>
 

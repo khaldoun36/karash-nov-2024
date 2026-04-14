@@ -12,17 +12,64 @@
                 <Logo />
             </NuxtLink>
             <nav class="mt-1 flex gap-8">
-                <NuxtLink
+                <template
                     v-for="link in primaryNavigationLinks"
                     :key="link.link ?? link.title"
-                    :to="localePath(link.link)"
-                    class="text-lg text-neutral-100 transition-colors hover:text-neutral-400"
-                    :class="{
-                        'tracking-wide': locale === 'en' || locale === 'tr',
-                    }"
                 >
-                    {{ link.title }}
-                </NuxtLink>
+                    <PopoverRoot
+                        v-if="link.link === '/projects'"
+                        v-model:open="isProjectsMenuOpen"
+                        :data-id="uniqueID_3"
+                        class="popover-root"
+                    >
+                        <PopoverTrigger
+                            class="flex items-center gap-1 text-lg text-neutral-100 transition-colors hover:text-neutral-400"
+                            :class="{
+                                'tracking-wide':
+                                    locale === 'en' || locale === 'tr',
+                            }"
+                        >
+                            <span>
+                                {{ link.title }}
+                            </span>
+                            <Icon
+                                name="heroicons:chevron-down-20-solid"
+                                class="-mt-0.5"
+                                aria-hidden="true"
+                                size="18px"
+                            />
+                        </PopoverTrigger>
+                        <PopoverPortal>
+                            <PopoverContent
+                                class="flex aspect-[4/3] h-auto w-[250px] flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
+                                side="bottom"
+                                :side-offset="10"
+                            >
+                                <div class="flex flex-col space-y-4">
+                                    <NuxtLink
+                                        v-for="categoryItem in projectCategoryItems"
+                                        :key="categoryItem.id"
+                                        :to="categoryItem.to"
+                                        @click="isProjectsMenuOpen = false"
+                                    >
+                                        {{ categoryItem.title }}
+                                    </NuxtLink>
+                                </div>
+                                <PopoverArrow class="fill-neutral-900/70" />
+                            </PopoverContent>
+                        </PopoverPortal>
+                    </PopoverRoot>
+                    <NuxtLink
+                        v-else
+                        :to="localePath(link.link)"
+                        class="text-lg text-neutral-100 transition-colors hover:text-neutral-400"
+                        :class="{
+                            'tracking-wide': locale === 'en' || locale === 'tr',
+                        }"
+                    >
+                        {{ link.title }}
+                    </NuxtLink>
+                </template>
                 <PopoverRoot :data-id="uniqueID" class="popover-root">
                     <PopoverTrigger
                         v-if="servicesNavigationGroup"
@@ -140,6 +187,10 @@
 
 <script setup>
 import Logo from "./Logo.vue";
+import {
+    PROJECT_CATEGORY_DEFINITIONS,
+    getProjectCategoryLabel,
+} from "~/constants/projectCategories";
 
 // Drop Down start
 import {
@@ -154,6 +205,7 @@ const { locale } = useI18n();
 const currentLocale = computed(() => locale.value);
 const localePath = useLocalePath();
 const switchLocalePath = useSwitchLocalePath();
+const route = useRoute();
 const { data: header } = await useLocalizedContent(
     "primary-header",
     "shared/header"
@@ -169,12 +221,46 @@ const serviceSubItems = computed(
     () => servicesNavigationGroup.value?.sub_items ?? []
 );
 const headerCta = computed(() => header.value?.cta ?? null);
+const projectCategoryItems = computed(() => [
+    {
+        id: "all",
+        title:
+            currentLocale.value === "ar"
+                ? "الكل"
+                : currentLocale.value === "tr"
+                  ? "Tümü"
+                  : currentLocale.value === "ku"
+                    ? "هەموو"
+                    : "All",
+        to: localePath("/projects"),
+    },
+    ...PROJECT_CATEGORY_DEFINITIONS.map((category) => ({
+        id: category.id,
+        title: getProjectCategoryLabel(
+            category.id,
+            currentLocale.value
+        ),
+        to: localePath({
+            path: "/projects",
+            query: { category: category.id },
+        }),
+    })),
+]);
 
 const uniqueID = useId();
 const uniqueID_2 = useId();
+const uniqueID_3 = useId();
 
 const headerRef = ref(null);
 const isScrolled = ref(false);
+const isProjectsMenuOpen = ref(false);
+
+watch(
+    () => route.fullPath,
+    () => {
+        isProjectsMenuOpen.value = false;
+    }
+);
 
 onMounted(() => {
     const handleScroll = () => {

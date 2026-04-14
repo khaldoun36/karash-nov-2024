@@ -2,9 +2,9 @@
     <!-- :class="{ uppercase: locale === 'en' }" -->
     <div
         ref="headerRef"
-        class="full-width wrapper fixed left-0 right-0 top-0 z-50 !hidden border-b border-white/0 bg-neutral-900/0 transition-colors duration-300 lg:!grid"
+        class="full-width wrapper fixed top-0 right-0 left-0 z-50 hidden! border-b border-white/0 bg-neutral-900/0 transition-colors duration-300 lg:grid!"
         :class="{
-            '!border-white/10 !bg-neutral-900/70 !backdrop-blur-md': isScrolled,
+            'border-white/10! bg-neutral-900/70! backdrop-blur-md!': isScrolled,
         }"
     >
         <header class="flex items-center justify-between">
@@ -40,7 +40,7 @@
                     </PopoverTrigger>
                     <PopoverPortal>
                         <PopoverContent
-                            class="flex aspect-[4/3] h-auto w-[250px] flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
+                            class="flex aspect-4/3 h-auto w-62.5 flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
                             side="bottom"
                             :side-offset="10"
                         >
@@ -49,7 +49,7 @@
                                     v-for="link in serviceSubItems"
                                     :key="link.title"
                                     :to="localePath(link.link)"
-                                    class="text-balance text-base font-medium text-neutral-100 transition-colors hover:text-neutral-400"
+                                    class="text-base font-medium text-balance text-neutral-100 transition-colors hover:text-neutral-400"
                                 >
                                     {{ link.title }}
                                 </NuxtLink>
@@ -159,7 +159,9 @@ const { data: header } = await useLocalizedContent(
     "shared/header"
 );
 const headerNavigation = computed(() => header.value?.header_navigation ?? []);
-const primaryNavigationLinks = computed(() => headerNavigation.value.slice(0, -1));
+const primaryNavigationLinks = computed(() =>
+    headerNavigation.value.slice(0, -1)
+);
 const servicesNavigationGroup = computed(
     () => headerNavigation.value.at(-1) ?? null
 );

@@ -21,8 +21,8 @@
                         :src="service?.imagePath"
                         :alt="service?.title"
                         class="aspect-square h-auto min-w-[calc(100vw-15vw)] overflow-clip rounded border border-white/10 object-cover brightness-90 md:min-w-[calc(100vw-40vw)] lg:min-w-lg xl:min-w-152 2xl:min-w-184"
-                        width="1600"
-                        height="1600"
+                        width="1024"
+                        height="1024"
                         fit="fill"
                     />
                     <div

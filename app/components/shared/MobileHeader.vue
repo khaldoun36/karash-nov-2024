@@ -1,7 +1,7 @@
 <template>
     <div
         ref="headerRef"
-        class="full-width wrapper fixed left-0 right-0 top-0 z-50 border-b border-white/0 py-4 transition-colors duration-300 xl:!hidden"
+        class="full-width wrapper fixed left-0 right-0 top-0 z-50 border-b border-white/0 py-4 transition-colors duration-300 xl:hidden!"
         :class="{
             'border-white/10': isScrolled,
         }"
@@ -110,7 +110,7 @@
                     <NuxtLink
                         v-if="headerCta?.link"
                         :to="localePath(headerCta.link)"
-                        class="btn !min-w-full text-center"
+                        class="btn min-w-full! text-center"
                         data-variant="primary"
                         @click="isMenuOpen = false"
                     >

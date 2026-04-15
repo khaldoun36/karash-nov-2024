@@ -41,7 +41,7 @@
                         </PopoverTrigger>
                         <PopoverPortal>
                             <PopoverContent
-                                class="flex aspect-[4/3] h-auto w-[250px] flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
+                                class="flex aspect-4/3 h-auto w-62.5 flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
                                 side="bottom"
                                 :side-offset="10"
                             >
@@ -121,7 +121,7 @@
                     </PopoverTrigger>
                     <PopoverPortal>
                         <PopoverContent
-                            class="flex aspect-[4/3] h-auto w-[250px] flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
+                            class="flex aspect-4/3 h-auto w-62.5 flex-col items-start justify-between rounded border border-white/10 bg-neutral-900/70 p-8 backdrop-blur-md"
                             side="bottom"
                             :side-offset="10"
                         >

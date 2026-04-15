@@ -2,7 +2,7 @@
     <img
         :src="logoSrc"
         alt="primary_logo"
-        class="inline-block h-[72px] w-auto"
+        class="inline-block h-18 w-auto"
     />
 </template>
 

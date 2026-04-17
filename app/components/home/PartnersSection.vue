@@ -46,7 +46,6 @@
 
 <script setup>
 const images = [
-    { src: "v1733903973/partners-image-5_it42gv.png", width: 99, height: 70 },
     {
         src: "v1733903972/partners-image-11_ffsdlt.png",
         width: 523,

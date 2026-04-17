@@ -4,7 +4,7 @@
         class="breakout mt-20 md:mt-24 lg:mt-32"
         id="storeLocations"
     >
-        <h2 class="max-w-[35ch] text-balance text-3xl md:text-5xl lg:text-6xl">
+        <h2 class="max-w-[35ch] text-3xl text-balance md:text-5xl lg:text-6xl">
             {{ storeLocations?.title }}
         </h2>
 
@@ -26,7 +26,7 @@
 
                     <NuxtLink
                         :to="location.locationLink"
-                        class="mt-8 text-balance text-sm transition-colors hover:text-neutral-600"
+                        class="mt-8 text-sm text-balance transition-colors hover:text-neutral-600"
                     >
                         {{ location.location }}
                     </NuxtLink>
@@ -46,7 +46,7 @@
             </div>
 
             <div
-                class="mt-10 hidden items-center gap-8 pr-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl"
+                class="mt-10 hidden items-center gap-8 pr-8 md:mt-12 lg:mt-16 lg:flex lg:max-w-5xl xl:max-w-7xl 2xl:max-w-screen-2xl"
             >
                 <button
                     class="embla__prev flex size-12 items-center justify-center rounded-full bg-neutral-900"

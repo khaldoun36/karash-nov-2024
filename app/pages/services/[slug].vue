@@ -9,9 +9,7 @@
         v-if="article"
     >
         <div class="self-start lg:sticky lg:top-20 lg:col-start-2">
-            <h1
-                class="lg:text-7.5xl max-w-[40ch] text-5xl text-balance md:text-7xl"
-            >
+            <h1 class="lg:text-7.5xl max-w-[40ch] text-5xl md:text-7xl">
                 {{ article?.title }}
             </h1>
             <p class="mt-8 max-w-[45ch] text-base text-balance">
@@ -26,9 +24,9 @@
                 provider="cloudinary"
                 fit="fill"
                 :modifiers="{ gravity: 'center' }"
-                width="2600"
-                height="2400"
-                class="aspect-3/4 overflow-clip rounded border border-white/10 object-cover"
+                width="2048"
+                height="2048"
+                class="aspect-square overflow-clip rounded border border-white/10 object-cover"
             />
         </div>
     </main>
